@@ -756,7 +756,12 @@ body {
 .support-header h2 { font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 15px; }
 .support-lead { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-.support-card-wrapper { display: flex; justify-content: center; }
+.support-card-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
 
 .support-donate-card {
     position: relative; border-radius: 20px; padding: 40px 30px;
@@ -952,4 +957,16 @@ body {
     .game-card { transform: none !important; }
     .cta-row { flex-direction: column; align-items: stretch; }
     .btn-soc { justify-content: center; }
+
+    .support-card-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .support-donate-card {
+        width: 100%;
+        max-width: 400px;
+    }
 }
