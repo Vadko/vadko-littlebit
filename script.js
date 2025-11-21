@@ -305,14 +305,12 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentIndex].classList.add('active');
             dots[currentIndex].classList.add('active');
 
-            // Повний скид прогрес-бару при зміні слайду
-            const progressBar = slides[currentIndex].querySelector('.slide-progress-bar');
-            if (progressBar) {
-                if (progressInterval) {
-                    clearInterval(progressInterval);
-                }
-                currentProgress = 0;
-                animateProgressBar(progressBar, 0);
+            // Скид прогресу при зміні слайду
+            currentProgress = 0;
+
+            // Зупинка поточної анімації
+            if (progressInterval) {
+                clearInterval(progressInterval);
             }
 
             // Перезапуск автоплею тільки при ручному перемиканні
@@ -326,19 +324,18 @@ document.addEventListener('DOMContentLoaded', () => {
             stopAutoplay();
             isPaused = false;
 
-            // Запуск прогрес-бару для поточного слайду (продовження з поточного прогресу)
+            // Запуск прогрес-бару (продовження з поточного прогресу або з 0)
             const progressBar = slides[currentIndex].querySelector('.slide-progress-bar');
             animateProgressBar(progressBar, currentProgress);
 
             // Розрахунок залишку часу
             const remainingTime = AUTOPLAY_DELAY * ((100 - currentProgress) / 100);
 
+            // Використовуємо setTimeout для першого циклу (щоб врахувати залишок після паузи)
             autoplayInterval = setTimeout(() => {
+                currentProgress = 0; // Скид перед наступним слайдом
                 goToSlide(currentIndex + 1, false);
-                // Після переходу встановлюємо інтервал
-                autoplayInterval = setInterval(() => {
-                    goToSlide(currentIndex + 1, false);
-                }, AUTOPLAY_DELAY);
+                startAutoplay(); // Рекурсивний виклик для продовження автоплею
             }, remainingTime);
         };
 
