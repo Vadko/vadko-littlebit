@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             currentProgress = startFrom;
             progressBar.style.width = startFrom + '%';
-            const increment = 100 / (AUTOPLAY_DELAY / 50); // Оновлення кожні 50мс
+            const increment = 100 / (AUTOPLAY_DELAY / 16); // 60 FPS (16мс)
 
             if (progressInterval) {
                 clearInterval(progressInterval);
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     progressBar.style.width = currentProgress + '%';
                 }
-            }, 50);
+            }, 16); // 60 FPS для плавності
         };
 
         // Функція переходу до слайду
