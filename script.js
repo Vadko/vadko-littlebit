@@ -240,10 +240,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const slider = document.querySelector('.news-slider');
         if (!slider) return;
 
-        const slides = Array.from(slider.querySelectorAll('.news-slide'));
+        const sliderTrack = slider.querySelector('.slider-track');
         const dotsContainer = slider.querySelector('.slider-dots');
         const prevBtn = slider.querySelector('.slider-prev');
         const nextBtn = slider.querySelector('.slider-next');
+
+        // Рендеримо слайди з newsSlides
+        if (typeof newsSlides !== 'undefined' && newsSlides.length > 0) {
+            sliderTrack.innerHTML = newsSlides.map((slide, index) => {
+                const badgeClass = `news-badge-${slide.badgeType}`;
+                const isActive = index === 0 ? 'active' : '';
+
+                return `
+                    <div class="news-slide ${isActive}" style="background-image: url('${slide.image}');">
+                        <div class="news-slide-overlay"></div>
+                        <div class="news-slide-content">
+                            <div class="news-badge ${badgeClass}">${slide.badge}</div>
+                            <h2 class="news-title">${slide.title}</h2>
+                            <p class="news-description">${slide.description}</p>
+                            <a href="${slide.link}" target="_blank" class="news-btn">
+                                <span>${slide.buttonText}</span>
+                            </a>
+                        </div>
+                        <div class="slide-progress-bar"></div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        const slides = Array.from(slider.querySelectorAll('.news-slide'));
 
         let currentIndex = 0;
         let autoplayInterval = null;
