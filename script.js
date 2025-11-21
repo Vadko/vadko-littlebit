@@ -271,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const slides = Array.from(slider.querySelectorAll('.news-slide'));
 
         let currentIndex = 0;
-        let autoplayInterval = null;
         let progressInterval = null;
         let isPaused = false;
         let isWaitingAfterManual = false; // Чи очікуємо після ручного перемикання
@@ -314,6 +313,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentProgress >= 100) {
                     currentProgress = 100;
                     progressBar.style.width = '100%';
+                    clearInterval(progressInterval);
+                    progressInterval = null;
+
+                    // Перемикаємо слайд тільки коли прогрес-бар досяг 100%
+                    if (!isWaitingAfterManual) {
+                        goToSlide(currentIndex + 1, false);
+                    }
                 } else {
                     progressBar.style.width = currentProgress + '%';
                 }
@@ -365,30 +371,11 @@ document.addEventListener('DOMContentLoaded', () => {
             stopAutoplay();
             isPaused = false;
 
-            // Запуск або продовження прогрес-бару
+            // Просто запускаємо прогрес-бар, він сам перемкне слайд коли досягне 100%
             startProgressBar(currentProgress);
-
-            // Розрахунок залишку часу
-            const remainingTime = AUTOPLAY_DELAY * ((100 - currentProgress) / 100);
-
-            // Таймер для переходу на наступний слайд
-            autoplayInterval = setTimeout(() => {
-                if (!isPaused) {
-                    goToSlide(currentIndex + 1, false);
-                    // Запуск автоплею для наступного слайду
-                    autoplayInterval = setInterval(() => {
-                        goToSlide(currentIndex + 1, false);
-                    }, AUTOPLAY_DELAY);
-                }
-            }, remainingTime);
         };
 
         const stopAutoplay = () => {
-            if (autoplayInterval) {
-                clearTimeout(autoplayInterval);
-                clearInterval(autoplayInterval);
-                autoplayInterval = null;
-            }
             stopProgressBar();
         };
 
