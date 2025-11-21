@@ -1056,9 +1056,15 @@ body {
     }
 
     .stat-track {
-        flex: none;
-        width: 100%;
-        height: 12px;
+        flex: none !important;
+        display: block !important;
+        width: 100% !important;
+        height: 12px !important;
+    }
+
+    .stat-fill {
+        display: block !important;
+        height: 100% !important;
     }
 
     .stat-row .stat-val {
