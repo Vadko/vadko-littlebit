@@ -336,8 +336,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const description = currentLang === 'uk' ? slide.description : (slide.description_en || slide.description);
                 const buttonText = currentLang === 'uk' ? slide.buttonText : (slide.buttonText_en || slide.buttonText);
 
+                // Lazy loading: завантажуємо тільки перший слайд, інші через data-атрибут
+                const bgStyle = index === 0 ? `style="background-image: url('${slide.image}');"` : `data-bg="${slide.image}"`;
+
                 return `
-                    <div class="news-slide ${isActive}" style="background-image: url('${slide.image}');">
+                    <div class="news-slide ${isActive}" ${bgStyle}>
                         <div class="news-slide-overlay"></div>
                         <div class="news-slide-content">
                             <div class="news-badge ${badgeClass}">${badge}</div>
@@ -429,6 +432,19 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = index;
             slides[currentIndex].classList.add('active');
             dots[currentIndex].classList.add('active');
+
+            // Lazy load зображення для поточного слайду
+            const currentSlide = slides[currentIndex];
+            if (currentSlide.dataset.bg && !currentSlide.style.backgroundImage) {
+                currentSlide.style.backgroundImage = `url('${currentSlide.dataset.bg}')`;
+            }
+
+            // Preload наступного слайду
+            const nextIndex = (currentIndex + 1) % slides.length;
+            const nextSlide = slides[nextIndex];
+            if (nextSlide.dataset.bg && !nextSlide.style.backgroundImage) {
+                nextSlide.style.backgroundImage = `url('${nextSlide.dataset.bg}')`;
+            }
 
             // Обнуляємо ВСІ прогрес-бари візуально
             slides.forEach(slide => {
