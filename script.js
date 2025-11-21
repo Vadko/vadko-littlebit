@@ -249,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let autoplayInterval = null;
         let progressInterval = null;
         let isPaused = false;
+        let currentProgress = 0;
         const AUTOPLAY_DELAY = 5000; // 5 секунд
 
         // Створюємо dots
@@ -266,11 +267,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = Array.from(dotsContainer.querySelectorAll('.slider-dot'));
 
         // Анімація прогрес-бару
-        const animateProgressBar = (progressBar) => {
+        const animateProgressBar = (progressBar, startFrom = 0) => {
             if (!progressBar) return;
 
-            progressBar.style.width = '0%';
-            let width = 0;
+            currentProgress = startFrom;
+            progressBar.style.width = startFrom + '%';
             const increment = 100 / (AUTOPLAY_DELAY / 50); // Оновлення кожні 50мс
 
             if (progressInterval) {
@@ -280,13 +281,13 @@ document.addEventListener('DOMContentLoaded', () => {
             progressInterval = setInterval(() => {
                 if (isPaused) return;
 
-                width += increment;
-                if (width >= 100) {
-                    width = 100;
+                currentProgress += increment;
+                if (currentProgress >= 100) {
+                    currentProgress = 100;
                     progressBar.style.width = '100%';
                     clearInterval(progressInterval);
                 } else {
-                    progressBar.style.width = width + '%';
+                    progressBar.style.width = currentProgress + '%';
                 }
             }, 50);
         };
@@ -304,13 +305,14 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentIndex].classList.add('active');
             dots[currentIndex].classList.add('active');
 
-            // Перезапуск прогрес-бару
+            // Повний скид прогрес-бару при зміні слайду
             const progressBar = slides[currentIndex].querySelector('.slide-progress-bar');
             if (progressBar) {
                 if (progressInterval) {
                     clearInterval(progressInterval);
                 }
-                animateProgressBar(progressBar);
+                currentProgress = 0;
+                animateProgressBar(progressBar, 0);
             }
 
             // Перезапуск автоплею тільки при ручному перемиканні
@@ -324,18 +326,26 @@ document.addEventListener('DOMContentLoaded', () => {
             stopAutoplay();
             isPaused = false;
 
-            // Запуск прогрес-бару для поточного слайду
+            // Запуск прогрес-бару для поточного слайду (продовження з поточного прогресу)
             const progressBar = slides[currentIndex].querySelector('.slide-progress-bar');
-            animateProgressBar(progressBar);
+            animateProgressBar(progressBar, currentProgress);
 
-            autoplayInterval = setInterval(() => {
+            // Розрахунок залишку часу
+            const remainingTime = AUTOPLAY_DELAY * ((100 - currentProgress) / 100);
+
+            autoplayInterval = setTimeout(() => {
                 goToSlide(currentIndex + 1, false);
-            }, AUTOPLAY_DELAY);
+                // Після переходу встановлюємо інтервал
+                autoplayInterval = setInterval(() => {
+                    goToSlide(currentIndex + 1, false);
+                }, AUTOPLAY_DELAY);
+            }, remainingTime);
         };
 
         const stopAutoplay = () => {
             if (autoplayInterval) {
                 clearInterval(autoplayInterval);
+                clearTimeout(autoplayInterval);
                 autoplayInterval = null;
             }
             if (progressInterval) {
@@ -347,10 +357,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const resetAutoplay = () => {
             stopAutoplay();
             isPaused = true;
+            currentProgress = 0; // Скид прогресу при ручному перемиканні
 
             // Пауза 3 секунди після ручного перемикання
             setTimeout(() => {
                 isPaused = false;
+                currentProgress = 0;
                 startAutoplay();
             }, 3000);
         };

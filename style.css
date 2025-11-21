@@ -196,8 +196,10 @@ body {
 .news-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 11px 26px;
+    min-height: 44px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
@@ -205,6 +207,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
+    line-height: 1.2;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -233,14 +236,6 @@ body {
     border-color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.news-btn svg {
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.news-btn:hover svg {
-    transform: translateX(5px);
 }
 
 /* Progress Bar */
@@ -439,6 +434,7 @@ body {
     .news-btn {
         padding: 10px 20px;
         font-size: 0.85rem;
+        min-height: 42px;
     }
 
     .slider-controls {
@@ -497,11 +493,7 @@ body {
         padding: 9px 16px;
         font-size: 0.75rem;
         gap: 6px;
-    }
-
-    .news-btn svg {
-        width: 14px;
-        height: 14px;
+        min-height: 38px;
     }
 
     .slider-controls {
