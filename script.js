@@ -146,9 +146,22 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('stat-count').innerText = filtered.length;
         document.getElementById('stat-ea').innerText = filtered.filter(p => p.status === 'early-access').length;
 
-        // Розрахунок середньої готовності з урахуванням автоматичного прогресу збору
-        const active = filtered.filter(p => p.status !== 'fundraising');
-        const avg = active.length ? Math.round(active.reduce((a,b)=>a+(b.progress||0),0)/active.length) : 0;
+        // Розрахунок середньої статистики залежно від фільтру
+        let avg = 0;
+        if (activeFilter === 'fundraising') {
+            // Для збору коштів рахуємо середній прогрес збору
+            const fundraising = filtered.filter(p => p.status === 'fundraising' && p.goal);
+            if (fundraising.length) {
+                const totalProgress = fundraising.reduce((sum, p) => {
+                    return sum + Math.min(Math.round((p.raised / p.goal) * 100), 100);
+                }, 0);
+                avg = Math.round(totalProgress / fundraising.length);
+            }
+        } else {
+            // Для інших фільтрів рахуємо середню готовність (без fundraising)
+            const active = filtered.filter(p => p.status !== 'fundraising');
+            avg = active.length ? Math.round(active.reduce((a,b)=>a+(b.progress||0),0)/active.length) : 0;
+        }
         document.getElementById('stat-avg').innerText = avg + "%";
     }
 
