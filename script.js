@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_lead: "Улюблені історії — українською, від серця.",
             stat_projects: "ПРОЄКТІВ", stat_avg: "СЕР. ГОТОВНІСТЬ", stat_ea: "РАННІЙ ДОСТУП",
             search_ph: "Пошук всесвіту...", filter_all: "Всі", filter_in_progress: "В процесі", filter_fundraising: "Збір", filter_early_access: "Ранній доступ",
+            news_title: "НОВИНИ",
             contacts_title: "Контакти", contacts_text: "Слідкуйте за новинами у наших соцмережах:",
             support_title: "Підтримати нас", support_text: "Ваша підтримка допомагає нам створювати якісні українські локалізації улюблених ігор",
             benefactors_title: "ДОБРОЧИНЦІ",
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_lead: "Favorite stories — in Ukrainian, from the heart.",
             stat_projects: "PROJECTS", stat_avg: "AVG. READINESS", stat_ea: "EARLY ACCESS",
             search_ph: "Search universe...", filter_all: "All", filter_in_progress: "In Progress", filter_fundraising: "Fundraising", filter_early_access: "Early Access",
+            news_title: "NEWS",
             contacts_title: "Contacts", contacts_text: "Follow our news on social media:",
             support_title: "Support Us", support_text: "Your support helps us create quality Ukrainian localizations of beloved games",
             benefactors_title: "BENEFACTORS",
@@ -65,6 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if(t[el.dataset.i18nPlaceholder]) el.placeholder = t[el.dataset.i18nPlaceholder];
         });
         renderGrid();
+
+        // Переініціалізація слайдера при зміні мови
+        if (typeof initNewsSlider === 'function') {
+            initNewsSlider();
+        }
     };
 
     function renderGrid() {
@@ -236,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGrid();
 
     // === NEWS SLIDER ===
-    const initNewsSlider = () => {
+    window.initNewsSlider = () => {
         const slider = document.querySelector('.news-slider');
         if (!slider) return;
 
@@ -245,21 +252,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevBtn = slider.querySelector('.slider-prev');
         const nextBtn = slider.querySelector('.slider-next');
 
-        // Рендеримо слайди з newsSlides
+        // Очищаємо попередні dots при переініціалізації
+        dotsContainer.innerHTML = '';
+
+        // Рендеримо слайди з newsSlides відповідно до поточної мови
         if (typeof newsSlides !== 'undefined' && newsSlides.length > 0) {
             sliderTrack.innerHTML = newsSlides.map((slide, index) => {
                 const badgeClass = `news-badge-${slide.badgeType}`;
                 const isActive = index === 0 ? 'active' : '';
 
+                // Вибір тексту залежно від мови
+                const badge = currentLang === 'uk' ? slide.badge : (slide.badge_en || slide.badge);
+                const title = currentLang === 'uk' ? slide.title : (slide.title_en || slide.title);
+                const description = currentLang === 'uk' ? slide.description : (slide.description_en || slide.description);
+                const buttonText = currentLang === 'uk' ? slide.buttonText : (slide.buttonText_en || slide.buttonText);
+
                 return `
                     <div class="news-slide ${isActive}" style="background-image: url('${slide.image}');">
                         <div class="news-slide-overlay"></div>
                         <div class="news-slide-content">
-                            <div class="news-badge ${badgeClass}">${slide.badge}</div>
-                            <h2 class="news-title">${slide.title}</h2>
-                            <p class="news-description">${slide.description}</p>
+                            <div class="news-badge ${badgeClass}">${badge}</div>
+                            <h2 class="news-title">${title}</h2>
+                            <p class="news-description">${description}</p>
                             <a href="${slide.link}" target="_blank" class="news-btn">
-                                <span>${slide.buttonText}</span>
+                                <span>${buttonText}</span>
                             </a>
                         </div>
                         <div class="slide-progress-bar"></div>
