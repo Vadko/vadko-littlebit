@@ -969,4 +969,49 @@ body {
         width: 100%;
         max-width: 400px;
     }
+
+    .modal-backdrop {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .modal-content {
+        max-height: calc(100vh - 40px);
+        border-radius: 16px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .m-logo {
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    .m-title {
+        font-size: 1.4rem;
+    }
+
+    .stats-box {
+        padding: 15px;
+    }
+
+    .stat-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .stat-row .stat-label {
+        min-width: auto;
+        text-align: left;
+        font-size: 0.8rem;
+    }
+
+    .stat-row .stat-val {
+        min-width: auto;
+        font-size: 0.8rem;
+    }
 }
