@@ -1,6 +1,16 @@
 // ДАНІ ДЛЯ СЛАЙДЕРА НОВИН
 const newsSlides = [
     {
+        id: "uncharted1-early-access",
+        badge: "РАННІЙ ДОСТУП",
+        badgeType: "announcement",
+        title: "Uncharted: Дрейкова Фортуна — ранній доступ!",
+        description: "Легендарна пригода Натана Дрейка українською! Перший розділ культової серії від Naughty Dog тепер доступний для завантаження.",
+        image: "assets/Uncharted1_news.webp",
+        link: "https://donatello.to/LittleBitUA",
+        buttonText: "Детальніше"
+    },
+    {
         id: "judgment-early-access",
         badge: "РАННІЙ ДОСТУП",
         badgeType: "announcement",
