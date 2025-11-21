@@ -1,32 +1,32 @@
 // ДАНІ ДЛЯ СЛАЙДЕРА НОВИН
 const newsSlides = [
     {
+        id: "uncharted1-early-access",
+        badge: "РАННІЙ ДОСТУП",
+        badge_en: "EARLY ACCESS",
+        badgeType: "announcement",
+        title: "Uncharted: Drake's Fortune — ранній доступ!",
+        title_en: "Uncharted: Drake's Fortune — Early Access!",
+        description: "Легендарна пригода Дрейка українською! Перший розділ культової серії від Naughty Dog тепер доступний для завантаження.",
+        description_en: "Nathan Drake's legendary adventure in Ukrainian! The first chapter of the iconic Naughty Dog series is now available for download.",
+        image: "assets/Uncharted1_news.webp",
+        link: "https://donatello.to/LittleBitUA",
+        buttonText: "Детальніше",
+        buttonText_en: "Learn More"
+    },
+    {
         id: "dispatch-release",
         badge: "ДОСТУПНО",
         badge_en: "AVAILABLE",
         badgeType: "localization",
         title: "Dispatch — 4 епізоди українською!",
         title_en: "Dispatch — 4 Episodes in Ukrainian!",
-        description: "Перші 4 епізоди захопливої детективної пригоди тепер доступні українською мовою. Завантажуйте та грайте!",
-        description_en: "The first 4 episodes of the thrilling detective adventure are now available in Ukrainian. Download and play!",
+        description: "Перші 4 епізоди захопливої пригоди тепер доступні українською мовою. Завантажуйте та грайте!",
+        description_en: "The first 4 episodes of the thrilling adventure are now available in Ukrainian. Download and play!",
         image: "assets/Dispatch_news.webp",
         link: "https://drive.google.com/file/d/1PxV-wsFB8PS5a2RaCHhxfS7OaAGfRt7R/view?usp=sharing",
         buttonText: "Завантажити",
         buttonText_en: "Download"
-    },
-    {
-        id: "uncharted1-early-access",
-        badge: "РАННІЙ ДОСТУП",
-        badge_en: "EARLY ACCESS",
-        badgeType: "announcement",
-        title: "Uncharted: Дрейкова Фортуна — ранній доступ!",
-        title_en: "Uncharted: Drake's Fortune — Early Access!",
-        description: "Легендарна пригода Натана Дрейка українською! Перший розділ культової серії від Naughty Dog тепер доступний для завантаження.",
-        description_en: "Nathan Drake's legendary adventure in Ukrainian! The first chapter of the iconic Naughty Dog series is now available for download.",
-        image: "assets/Uncharted1_news.webp",
-        link: "https://donatello.to/LittleBitUA",
-        buttonText: "Детальніше",
-        buttonText_en: "Learn More"
     },
     {
         id: "judgment-early-access",
@@ -49,7 +49,7 @@ const newsSlides = [
         badgeType: "progress",
         title: "Yakuza: Like a Dragon — перекладено 20%!",
         title_en: "Yakuza: Like a Dragon — 20% Translated!",
-        description: "Зібрано 11 220₴ з 35 000₴. Підтримайте локалізацію легендарної пригоди Ічібана Касуґі українською мовою!",
+        description: "Зібрано 11 220₴ з 35 000₴. Підтримайте локалізацію легендарної пригоди Ічібана Касуґи українською мовою!",
         description_en: "Raised ₴11,220 of ₴35,000. Support the Ukrainian localization of Ichiban Kasuga's legendary adventure!",
         image: "assets/yakuza_news.webp",
         link: "https://donatello.to/LittleBitUA",

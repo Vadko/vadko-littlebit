@@ -214,6 +214,10 @@ body {
     width: fit-content;
     position: relative;
     overflow: hidden;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .news-btn::before {
@@ -278,6 +282,13 @@ body {
     -webkit-backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .slider-nav::before {
@@ -334,6 +345,13 @@ body {
     border: none;
     padding: 0;
     position: relative;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .slider-dot::before {
@@ -611,6 +629,7 @@ body {
     cursor: pointer; border: 1px solid var(--border); padding: 5px 12px;
     border-radius: 20px; background: var(--glass); font-size: 0.85rem;
     color: var(--text-muted); transition: 0.3s;
+    outline: none; -webkit-tap-highlight-color: transparent; user-select: none;
 }
 .lang-opt.active { color: white; font-weight: 700; }
 
@@ -651,6 +670,7 @@ body {
     background: rgba(255,255,255,0.03); border: 1px solid var(--border);
     color: var(--text-muted); padding: 8px 18px; border-radius: 30px;
     cursor: pointer; transition: 0.3s; white-space: nowrap; font-size: 0.9rem;
+    outline: none; -webkit-tap-highlight-color: transparent; user-select: none;
 }
 
 /* ВИПРАВЛЕНО: Замість проблемної тіні - чистий стиль */
@@ -733,6 +753,7 @@ body {
     text-align: center; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
     transition: 0.3s; border: none; display: flex; justify-content: center; align-items: center;
     cursor: pointer; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    outline: none; -webkit-tap-highlight-color: transparent; user-select: none;
 }
 .btn-action:hover { filter: brightness(1.2); transform: translateY(-2px); }
 
@@ -769,6 +790,7 @@ body {
     border: 1px solid var(--border); background: var(--glass);
     transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center;
     backdrop-filter: blur(10px); min-width: 280px;
+    outline: none; -webkit-tap-highlight-color: transparent; user-select: none;
 }
 
 .donate-bg {
@@ -919,6 +941,7 @@ body {
     position: absolute; top: 15px; right: 15px; width: 32px; height: 32px;
     background: rgba(255,255,255,0.1); border-radius: 50%; border: none;
     color: white; cursor: pointer; z-index: 10; font-size: 1.2rem;
+    outline: none; -webkit-tap-highlight-color: transparent; user-select: none;
 }
 .modal-body { padding: 25px; }
 .m-logo { height: 80px; margin-bottom: 20px; }
@@ -968,5 +991,50 @@ body {
     .support-donate-card {
         width: 100%;
         max-width: 400px;
+    }
+
+    .modal-backdrop {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .modal-content {
+        max-height: calc(100vh - 40px);
+        border-radius: 16px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .m-logo {
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    .m-title {
+        font-size: 1.4rem;
+    }
+
+    .stats-box {
+        padding: 15px;
+    }
+
+    .stat-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .stat-row .stat-label {
+        min-width: auto;
+        text-align: left;
+        font-size: 0.8rem;
+    }
+
+    .stat-row .stat-val {
+        min-width: auto;
+        font-size: 0.8rem;
     }
 }
