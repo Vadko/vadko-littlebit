@@ -313,6 +313,14 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentIndex].classList.add('active');
             dots[currentIndex].classList.add('active');
 
+            // Обнуляємо ВСІ прогрес-бари візуально
+            slides.forEach(slide => {
+                const progressBar = slide.querySelector('.slide-progress-bar');
+                if (progressBar) {
+                    progressBar.style.width = '0%';
+                }
+            });
+
             // Скид та перезапуск прогрес-бару
             stopProgressBar();
             currentProgress = 0;
