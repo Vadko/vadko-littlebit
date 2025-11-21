@@ -1059,12 +1059,16 @@ body {
         flex: none !important;
         display: block !important;
         width: 100% !important;
+        min-width: 200px !important;
         height: 12px !important;
+        background: rgba(255,255,255,0.1) !important;
+        overflow: visible !important;
     }
 
     .stat-fill {
         display: block !important;
         height: 100% !important;
+        min-width: 10px !important;
     }
 
     .stat-row .stat-val {
