@@ -1,6 +1,20 @@
 // ДАНІ ДЛЯ СЛАЙДЕРА НОВИН
 const newsSlides = [
     {
+        id: "dispatch-release",
+        badge: "ДОСТУПНО",
+        badge_en: "AVAILABLE",
+        badgeType: "localization",
+        title: "Dispatch — 4 епізоди українською!",
+        title_en: "Dispatch — 4 Episodes in Ukrainian!",
+        description: "Перші 4 епізоди захопливої детективної пригоди тепер доступні українською мовою. Завантажуйте та грайте!",
+        description_en: "The first 4 episodes of the thrilling detective adventure are now available in Ukrainian. Download and play!",
+        image: "assets/Dispatch_news.webp",
+        link: "https://drive.google.com/file/d/1PxV-wsFB8PS5a2RaCHhxfS7OaAGfRt7R/view?usp=sharing",
+        buttonText: "Завантажити",
+        buttonText_en: "Download"
+    },
+    {
         id: "uncharted1-early-access",
         badge: "РАННІЙ ДОСТУП",
         badge_en: "EARLY ACCESS",
