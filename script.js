@@ -249,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let autoplayInterval = null;
         let progressInterval = null;
         let isPaused = false;
+        let isWaitingAfterManual = false; // Чи очікуємо після ручного перемикання
         let currentProgress = 0;
         const AUTOPLAY_DELAY = 5000; // 5 секунд
 
@@ -368,13 +369,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resetAutoplay = () => {
             stopAutoplay();
-            isPaused = true;
+            isPaused = false;
+            isWaitingAfterManual = true;
             currentProgress = 0;
 
             // Пауза 3 секунди після ручного перемикання
             setTimeout(() => {
-                if (isPaused) { // Перевірка чи не було іншої взаємодії
-                    isPaused = false;
+                if (isWaitingAfterManual) {
+                    isWaitingAfterManual = false;
                     currentProgress = 0;
                     startAutoplay();
                 }
@@ -392,11 +394,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Пауза при наведенні
         slider.addEventListener('mouseenter', () => {
+            // Не реагуємо якщо очікуємо після ручного перемикання
+            if (isWaitingAfterManual) return;
+
             isPaused = true;
             stopAutoplay();
         });
 
         slider.addEventListener('mouseleave', () => {
+            // Не реагуємо якщо очікуємо після ручного перемикання
+            if (isWaitingAfterManual) return;
+
             isPaused = false;
             startAutoplay();
         });
@@ -434,6 +442,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Зупинка при виході з вкладки
         document.addEventListener('visibilitychange', () => {
+            // Не реагуємо якщо очікуємо після ручного перемикання
+            if (isWaitingAfterManual) return;
+
             if (document.hidden) {
                 isPaused = true;
                 stopAutoplay();
