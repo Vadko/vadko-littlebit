@@ -101,7 +101,9 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.03);
 }
+
 
 .news-slide.active {
     position: relative;
