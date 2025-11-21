@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let stClass = 'st-prog', stText = t.st_prog;
             let barColor = 'var(--neon-blue)';
             let metaLabel = t.lbl_readiness;
-            let metaVal = `${p.progress}%`;
             let btnClass = 'btn-grad-blue';
 
             // Автоматичний розрахунок загального прогресу на основі компонентів
@@ -104,6 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     displayProgress = Math.round(components.reduce((a, b) => a + b, 0) / components.length);
                 }
             }
+
+            // Встановлюємо metaVal після розрахунку displayProgress
+            let metaVal = `${displayProgress}%`;
 
             if(p.status === 'fundraising') {
                 stClass = 'st-fund'; stText = t.st_fund; barColor = 'var(--neon-orange)';
