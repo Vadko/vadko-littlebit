@@ -267,16 +267,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = Array.from(dotsContainer.querySelectorAll('.slider-dot'));
 
         // Анімація прогрес-бару
-        const animateProgressBar = (progressBar, startFrom = 0) => {
+        const startProgressBar = (startFrom = 0) => {
+            const progressBar = slides[currentIndex].querySelector('.slide-progress-bar');
             if (!progressBar) return;
+
+            // Зупинка попереднього інтервалу
+            if (progressInterval) {
+                clearInterval(progressInterval);
+                progressInterval = null;
+            }
 
             currentProgress = startFrom;
             progressBar.style.width = startFrom + '%';
-            const increment = 100 / (AUTOPLAY_DELAY / 16); // 60 FPS (16мс)
-
-            if (progressInterval) {
-                clearInterval(progressInterval);
-            }
+            const increment = 100 / (AUTOPLAY_DELAY / 16); // 60 FPS
 
             progressInterval = setInterval(() => {
                 if (isPaused) return;
@@ -285,11 +288,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentProgress >= 100) {
                     currentProgress = 100;
                     progressBar.style.width = '100%';
-                    clearInterval(progressInterval);
                 } else {
                     progressBar.style.width = currentProgress + '%';
                 }
-            }, 16); // 60 FPS для плавності
+            }, 16);
+        };
+
+        const stopProgressBar = () => {
+            if (progressInterval) {
+                clearInterval(progressInterval);
+                progressInterval = null;
+            }
         };
 
         // Функція переходу до слайду
@@ -297,24 +306,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (index < 0) index = slides.length - 1;
             if (index >= slides.length) index = 0;
 
+            // Зміна слайдів
             slides[currentIndex].classList.remove('active');
             dots[currentIndex].classList.remove('active');
-
             currentIndex = index;
-
             slides[currentIndex].classList.add('active');
             dots[currentIndex].classList.add('active');
 
-            // Скид прогресу при зміні слайду
+            // Скид та перезапуск прогрес-бару
+            stopProgressBar();
             currentProgress = 0;
 
-            // Зупинка поточної анімації
-            if (progressInterval) {
-                clearInterval(progressInterval);
-            }
-
-            // Перезапуск автоплею тільки при ручному перемиканні
-            if (isManual) {
+            if (!isManual) {
+                // Автоматичне перемикання - запускаємо прогрес-бар
+                startProgressBar(0);
+            } else {
+                // Ручне перемикання - ресет автоплею з паузою
                 resetAutoplay();
             }
         };
@@ -324,43 +331,45 @@ document.addEventListener('DOMContentLoaded', () => {
             stopAutoplay();
             isPaused = false;
 
-            // Запуск прогрес-бару (продовження з поточного прогресу або з 0)
-            const progressBar = slides[currentIndex].querySelector('.slide-progress-bar');
-            animateProgressBar(progressBar, currentProgress);
+            // Запуск або продовження прогрес-бару
+            startProgressBar(currentProgress);
 
             // Розрахунок залишку часу
             const remainingTime = AUTOPLAY_DELAY * ((100 - currentProgress) / 100);
 
-            // Використовуємо setTimeout для першого циклу (щоб врахувати залишок після паузи)
+            // Таймер для переходу на наступний слайд
             autoplayInterval = setTimeout(() => {
-                currentProgress = 0; // Скид перед наступним слайдом
-                goToSlide(currentIndex + 1, false);
-                startAutoplay(); // Рекурсивний виклик для продовження автоплею
+                if (!isPaused) {
+                    goToSlide(currentIndex + 1, false);
+                    // Запуск автоплею для наступного слайду
+                    autoplayInterval = setInterval(() => {
+                        goToSlide(currentIndex + 1, false);
+                    }, AUTOPLAY_DELAY);
+                }
             }, remainingTime);
         };
 
         const stopAutoplay = () => {
             if (autoplayInterval) {
-                clearInterval(autoplayInterval);
                 clearTimeout(autoplayInterval);
+                clearInterval(autoplayInterval);
                 autoplayInterval = null;
             }
-            if (progressInterval) {
-                clearInterval(progressInterval);
-                progressInterval = null;
-            }
+            stopProgressBar();
         };
 
         const resetAutoplay = () => {
             stopAutoplay();
             isPaused = true;
-            currentProgress = 0; // Скид прогресу при ручному перемиканні
+            currentProgress = 0;
 
             // Пауза 3 секунди після ручного перемикання
             setTimeout(() => {
-                isPaused = false;
-                currentProgress = 0;
-                startAutoplay();
+                if (isPaused) { // Перевірка чи не було іншої взаємодії
+                    isPaused = false;
+                    currentProgress = 0;
+                    startAutoplay();
+                }
             }, 3000);
         };
 
