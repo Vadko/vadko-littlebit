@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Версія для cache busting зображень (синхронізовано з .version)
+    const ASSETS_VERSION = '1.3.1';
+
+    // Функція для додавання версії до URL зображення
+    const addImageVersion = (url) => {
+        if (!url || url.startsWith('http') || url.startsWith('data:')) return url;
+        return url.includes('?') ? `${url}&v=${ASSETS_VERSION}` : `${url}?v=${ASSETS_VERSION}`;
+    };
+
     const translations = {
         uk: {
             nav_projects: "Проєкти", nav_support: "Підтримка", nav_contacts: "Контакти",
@@ -143,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'game-card';
             card.innerHTML = `
                 <div class="card-visual">
-                    <img src="${p.cover}" class="card-bg-img" loading="lazy">
+                    <img src="${addImageVersion(p.cover)}" class="card-bg-img" loading="lazy">
                     <div class="card-logo-layer">
-                        <img src="${p.logo}" class="card-logo" onerror="this.style.display='none'">
+                        <img src="${addImageVersion(p.logo)}" class="card-logo" onerror="this.style.display='none'">
                     </div>
                 </div>
                 <div class="card-info">
@@ -225,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     // Yakuza Easter Egg
-    const yakuzaSound = new Audio('assets/sound.mp3');
+    const yakuzaSound = new Audio(addImageVersion('assets/sound.mp3'));
     let yakuzaSoundPlayed = false;
 
     document.getElementById('search').addEventListener('input', (e) => {
@@ -257,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!p) return;
         const t = translations[currentLang];
 
-        document.getElementById('m-logo').src = p.logo;
+        document.getElementById('m-logo').src = addImageVersion(p.logo);
         document.getElementById('m-desc').innerHTML = currentLang==='uk'?p.desc: (p.desc_en || p.desc);
 
         const sBox = document.getElementById('m-stats'); sBox.innerHTML = '';
@@ -350,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const buttonText = currentLang === 'uk' ? slide.buttonText : (slide.buttonText_en || slide.buttonText);
 
                 // Lazy loading: завантажуємо тільки перший слайд, інші через data-атрибут
-                const bgStyle = index === 0 ? `style="background-image: url('${slide.image}');"` : `data-bg="${slide.image}"`;
+                const bgStyle = index === 0 ? `style="background-image: url('${addImageVersion(slide.image)}');"` : `data-bg="${addImageVersion(slide.image)}"`;
 
                 return `
                     <div class="news-slide ${isActive}" ${bgStyle}>
