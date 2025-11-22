@@ -855,15 +855,22 @@ body {
     opacity: 1;
 }
 
+.donate-bg {
+    position: absolute; inset: 3px; transition: 0.3s;
+    background: rgba(15, 20, 30, 0.98);
+    border-radius: 17px;
+    z-index: 1;
+}
+
 .donate-gradient {
-    position: absolute; inset: 0; opacity: 0; transition: 0.3s;
+    position: absolute; inset: 3px; opacity: 0; transition: 0.3s;
     background: radial-gradient(
         circle at var(--mouse-x) var(--mouse-y),
         rgba(99, 102, 241, 0.1),
         transparent 60%
     );
-    border-radius: 20px;
-    z-index: 1;
+    border-radius: 17px;
+    z-index: 2;
 }
 
 .support-donate-card:hover .donate-gradient {
@@ -875,7 +882,7 @@ body {
     box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
 }
 
-.donate-content { position: relative; z-index: 2; text-align: center; width: 100%; }
+.donate-content { position: relative; z-index: 3; text-align: center; width: 100%; }
 
 .donate-icon {
     width: 70px; height: 70px; margin: 0 auto 20px; border-radius: 50%;
@@ -914,8 +921,6 @@ body {
 .contact-card {
     position: relative; border-radius: 20px; padding: 40px 30px;
     text-decoration: none; color: white; overflow: hidden;
-    background: rgba(15, 20, 30, 0.95);
-    backdrop-filter: blur(10px);
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     display: flex; flex-direction: column; align-items: center;
     --mouse-x: 50%;
@@ -993,10 +998,18 @@ body {
     );
 }
 
-.contact-gradient {
-    position: absolute; inset: 0; opacity: 0; transition: 0.3s;
-    border-radius: 20px;
+.contact-bg {
+    position: absolute; inset: 3px; transition: 0.3s;
+    background: rgba(15, 20, 30, 0.98);
+    border-radius: 17px;
+    backdrop-filter: blur(10px);
     z-index: 1;
+}
+
+.contact-gradient {
+    position: absolute; inset: 3px; opacity: 0; transition: 0.3s;
+    border-radius: 17px;
+    z-index: 2;
 }
 .contact-telegram .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 136, 204, 0.15), transparent 60%); }
 .contact-youtube .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 0, 0, 0.15), transparent 60%); }
@@ -1008,7 +1021,7 @@ body {
 }
 .contact-card:hover .contact-gradient { opacity: 1; }
 
-.contact-content { position: relative; z-index: 2; text-align: center; width: 100%; }
+.contact-content { position: relative; z-index: 3; text-align: center; width: 100%; }
 
 .contact-icon {
     width: 70px; height: 70px; margin: 0 auto 20px; border-radius: 50%;
