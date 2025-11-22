@@ -583,4 +583,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ініціалізація слайдера
     initNewsSlider();
+
+    // Bento-style gradient effect для donate cards
+    const donateCards = document.querySelectorAll('.support-donate-card');
+
+    donateCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+
+            card.style.setProperty('--mouse-x', `${xPercent}%`);
+            card.style.setProperty('--mouse-y', `${yPercent}%`);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--mouse-x', '50%');
+            card.style.setProperty('--mouse-y', '50%');
+        });
+    });
 });
