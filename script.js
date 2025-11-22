@@ -45,18 +45,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Дані імпортуються з data.js
 
-    // TILT
+    // ENHANCED TILT with Logo Parallax
     const initTilt = (card) => {
+        const logo = card.querySelector('.card-logo');
+
         card.addEventListener('mousemove', (e) => {
             if(window.innerWidth < 900) return;
             const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-            const cx = rect.width / 2; const cy = rect.height / 2;
-            const dx = (x - cx) / cx; const dy = (y - cy) / cy;
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const dx = (x - cx) / cx;
+            const dy = (y - cy) / cy;
+
+            // Картка нахиляється
             card.style.transform = `perspective(1000px) rotateX(${-dy * 5}deg) rotateY(${dx * 5}deg)`;
+
+            // Логотип рухається в протилежному напрямку (паралакс)
+            if (logo) {
+                logo.style.transform = `translateX(${dx * 15}px) translateY(${dy * 15}px) translateZ(30px)`;
+            }
         });
+
         card.addEventListener('mouseleave', () => {
             card.style.transform = `perspective(1000px) rotateX(0) rotateY(0)`;
+            if (logo) {
+                logo.style.transform = `translateX(0) translateY(0) translateZ(0)`;
+            }
         });
     };
 
@@ -620,5 +636,58 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.setProperty('--mouse-y', '50%');
             card.style.setProperty('--gradient-angle', 0);
         });
+    });
+
+    // === SCROLL-TRIGGERED ANIMATIONS ===
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-on-scroll');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Спостерігаємо за секціями
+    const sectionsToAnimate = document.querySelectorAll('.contacts-section, .support-section, .benefactors-section');
+    sectionsToAnimate.forEach(section => observer.observe(section));
+
+    // Спостерігаємо за картками (додаються динамічно через MutationObserver)
+    const gridObserver = new MutationObserver(() => {
+        const cards = document.querySelectorAll('.game-card:not(.animate-on-scroll)');
+        cards.forEach(card => observer.observe(card));
+    });
+
+    gridObserver.observe(grid, { childList: true });
+
+    // === CURSOR TRAIL ===
+    let lastParticleTime = 0;
+    const particleDelay = 30; // мс між частинками
+
+    document.addEventListener('mousemove', (e) => {
+        // Пропускаємо на мобільних
+        if (window.innerWidth < 900) return;
+
+        const now = Date.now();
+        if (now - lastParticleTime < particleDelay) return;
+        lastParticleTime = now;
+
+        // Створюємо частинку тільки якщо курсор рухається
+        const particle = document.createElement('div');
+        particle.className = 'cursor-particle';
+        particle.style.left = e.pageX + 'px';
+        particle.style.top = e.pageY + 'px';
+
+        document.body.appendChild(particle);
+
+        // Видаляємо після анімації
+        setTimeout(() => {
+            particle.remove();
+        }, 800);
     });
 });
