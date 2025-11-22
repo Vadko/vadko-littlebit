@@ -92,15 +92,28 @@ document.addEventListener('DOMContentLoaded', () => {
             let btnClass = 'btn-grad-blue';
 
             // Автоматичний розрахунок загального прогресу на основі компонентів
+            // Шрифти мають найменший вплив на загальну готовність
             let displayProgress = p.progress;
             if (p.progress_text !== undefined || p.progress_textures !== undefined || p.progress_fonts !== undefined) {
-                const components = [];
-                if (p.progress_text !== undefined) components.push(p.progress_text);
-                if (p.progress_textures !== undefined) components.push(p.progress_textures);
-                if (p.progress_fonts !== undefined) components.push(p.progress_fonts);
+                let weightedSum = 0;
+                let totalWeight = 0;
 
-                if (components.length > 0) {
-                    displayProgress = Math.round(components.reduce((a, b) => a + b, 0) / components.length);
+                // Ваги компонентів: текст - 60%, текстури - 30%, шрифти - 10%
+                if (p.progress_text !== undefined) {
+                    weightedSum += p.progress_text * 0.6;
+                    totalWeight += 0.6;
+                }
+                if (p.progress_textures !== undefined) {
+                    weightedSum += p.progress_textures * 0.3;
+                    totalWeight += 0.3;
+                }
+                if (p.progress_fonts !== undefined) {
+                    weightedSum += p.progress_fonts * 0.1;
+                    totalWeight += 0.1;
+                }
+
+                if (totalWeight > 0) {
+                    displayProgress = Math.round(weightedSum / totalWeight);
                 }
             }
 

@@ -420,8 +420,6 @@ body {
 
     .news-slide {
         height: 400px;
-        background-size: contain;
-        background-position: center top;
     }
 
     .news-slide-overlay {
@@ -491,8 +489,6 @@ body {
     .news-slide {
         height: 360px;
         border-radius: 16px;
-        background-size: contain;
-        background-position: center top;
     }
 
     .slider-track {
@@ -559,8 +555,6 @@ body {
 @media (max-width: 360px) {
     .news-slide {
         height: 340px;
-        background-size: contain;
-        background-position: center top;
     }
 
     .news-slide-content {
