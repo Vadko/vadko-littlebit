@@ -821,7 +821,7 @@ body {
     --mouse-y: 50%;
 }
 
-/* Анімований градієнт рамки - обертається по всьому контуру */
+/* Градієнт рамки (статичний) */
 .support-donate-card::before {
     content: '';
     position: absolute;
@@ -842,16 +842,6 @@ body {
 
 .support-donate-card:hover::before {
     opacity: 1;
-    animation: rotateBorder 3s linear infinite;
-}
-
-@keyframes rotateBorder {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
 }
 
 .donate-bg {
@@ -926,7 +916,7 @@ body {
     --mouse-y: 50%;
 }
 
-/* Анімований градієнт рамки для контактів */
+/* Градієнт рамки для контактів (статичний) */
 .contact-card::before {
     content: '';
     position: absolute;
@@ -947,7 +937,6 @@ body {
 
 .contact-card:hover::before {
     opacity: 1;
-    animation: rotateBorder 3s linear infinite;
 }
 
 .contact-bg {
