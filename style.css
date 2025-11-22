@@ -890,18 +890,6 @@ body {
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
     transition: 0.3s;
-    position: relative;
-}
-
-.donate-icon::after {
-    content: '';
-    position: absolute;
-    inset: -40%;
-    background: inherit;
-    filter: blur(40px);
-    opacity: 0.3;
-    z-index: -1;
-    border-radius: 50%;
 }
 .support-donate-card:hover .donate-icon { transform: scale(1.1) rotate(5deg); }
 .donate-icon svg { width: 35px; height: 35px; }
@@ -1040,18 +1028,6 @@ body {
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
-    position: relative;
-}
-
-.contact-icon::after {
-    content: '';
-    position: absolute;
-    inset: -40%;
-    background: inherit;
-    filter: blur(40px);
-    opacity: 0.4;
-    z-index: -1;
-    border-radius: 50%;
 }
 
 .contact-telegram .contact-icon { background: linear-gradient(135deg, #0088cc, #0088cc); }
