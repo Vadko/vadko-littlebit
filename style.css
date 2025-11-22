@@ -822,7 +822,7 @@ body {
     --gradient-angle: 0;
 }
 
-/* Градієнт рамки (слідує за курсором) */
+/* Градієнт рамки (слідує за курсором) - Donatello та Monobank */
 .support-donate-card::before {
     content: '';
     position: absolute;
@@ -830,11 +830,21 @@ body {
     border-radius: 20px;
     background: conic-gradient(
         from calc(var(--gradient-angle) * 1deg),
-        #00f2ff 0deg,
-        #bd00ff 90deg,
-        #ff0055 180deg,
-        #ff9e00 270deg,
-        #00f2ff 360deg
+        #6366f1 0deg,
+        #8b5cf6 90deg,
+        #a78bfa 180deg,
+        #c084fc 270deg,
+        #6366f1 360deg
+    );
+    mask: radial-gradient(
+        circle 150px at var(--mouse-x) var(--mouse-y),
+        black 0%,
+        transparent 100%
+    );
+    -webkit-mask: radial-gradient(
+        circle 150px at var(--mouse-x) var(--mouse-y),
+        black 0%,
+        transparent 100%
     );
     opacity: 0;
     transition: opacity 0.2s ease;
@@ -880,6 +890,18 @@ body {
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
     transition: 0.3s;
+    position: relative;
+}
+
+.donate-icon::after {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    background: inherit;
+    filter: blur(40px);
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 50%;
 }
 .support-donate-card:hover .donate-icon { transform: scale(1.1) rotate(5deg); }
 .donate-icon svg { width: 35px; height: 35px; }
@@ -924,13 +946,15 @@ body {
     position: absolute;
     inset: 0;
     border-radius: 20px;
-    background: conic-gradient(
-        from calc(var(--gradient-angle) * 1deg),
-        #00f2ff 0deg,
-        #bd00ff 90deg,
-        #ff0055 180deg,
-        #ff9e00 270deg,
-        #00f2ff 360deg
+    mask: radial-gradient(
+        circle 150px at var(--mouse-x) var(--mouse-y),
+        black 0%,
+        transparent 100%
+    );
+    -webkit-mask: radial-gradient(
+        circle 150px at var(--mouse-x) var(--mouse-y),
+        black 0%,
+        transparent 100%
     );
     opacity: 0;
     transition: opacity 0.2s ease;
@@ -939,6 +963,51 @@ body {
 
 .contact-card:hover::before {
     opacity: 1;
+}
+
+/* Кольори градієнта для кожної платформи */
+.contact-telegram::before {
+    background: conic-gradient(
+        from calc(var(--gradient-angle) * 1deg),
+        #0088cc 0deg,
+        #64b5e8 90deg,
+        #a8d5f2 180deg,
+        #64b5e8 270deg,
+        #0088cc 360deg
+    );
+}
+
+.contact-youtube::before {
+    background: conic-gradient(
+        from calc(var(--gradient-angle) * 1deg),
+        #FF0000 0deg,
+        #ff4444 90deg,
+        #ff8888 180deg,
+        #ff4444 270deg,
+        #FF0000 360deg
+    );
+}
+
+.contact-tiktok::before {
+    background: conic-gradient(
+        from calc(var(--gradient-angle) * 1deg),
+        #ff0050 0deg,
+        #00f2ea 90deg,
+        #ff0050 180deg,
+        #00f2ea 270deg,
+        #ff0050 360deg
+    );
+}
+
+.contact-twitter::before {
+    background: conic-gradient(
+        from calc(var(--gradient-angle) * 1deg),
+        #1DA1F2 0deg,
+        #4ab3f4 90deg,
+        #89cff7 180deg,
+        #4ab3f4 270deg,
+        #1DA1F2 360deg
+    );
 }
 
 .contact-bg {
@@ -971,11 +1040,24 @@ body {
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
+    position: relative;
 }
+
+.contact-icon::after {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    background: inherit;
+    filter: blur(40px);
+    opacity: 0.4;
+    z-index: -1;
+    border-radius: 50%;
+}
+
 .contact-telegram .contact-icon { background: linear-gradient(135deg, #0088cc, #0088cc); }
 .contact-youtube .contact-icon { background: linear-gradient(135deg, #FF0000, #c4302b); }
 .contact-tiktok .contact-icon { background: linear-gradient(135deg, #ff0050, #00f2ea); }
-.contact-twitter .contact-icon { background: linear-gradient(135deg, #000000, #14171a); }
+.contact-twitter .contact-icon { background: linear-gradient(135deg, #1DA1F2, #0c85d0); }
 
 .contact-card:hover .contact-icon { transform: scale(1.1) rotate(5deg); }
 .contact-icon svg { width: 35px; height: 35px; }
