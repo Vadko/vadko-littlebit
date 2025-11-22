@@ -990,11 +990,11 @@ body {
 .contact-twitter::before {
     background: conic-gradient(
         from calc(var(--gradient-angle) * 1deg),
-        #1DA1F2 0deg,
-        #4ab3f4 90deg,
-        #89cff7 180deg,
-        #4ab3f4 270deg,
-        #1DA1F2 360deg
+        #000000 0deg,
+        #2a2a2a 90deg,
+        #4a4a4a 180deg,
+        #2a2a2a 270deg,
+        #000000 360deg
     );
 }
 
@@ -1014,7 +1014,7 @@ body {
 .contact-telegram .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 136, 204, 0.15), transparent 60%); }
 .contact-youtube .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 0, 0, 0.15), transparent 60%); }
 .contact-tiktok .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 0, 80, 0.15), transparent 60%); }
-.contact-twitter .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(99, 102, 241, 0.15), transparent 60%); }
+.contact-twitter .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.15), transparent 60%); }
 
 .contact-card:hover {
     transform: translateY(-5px); box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
@@ -1033,7 +1033,7 @@ body {
 .contact-telegram .contact-icon { background: linear-gradient(135deg, #0088cc, #0088cc); }
 .contact-youtube .contact-icon { background: linear-gradient(135deg, #FF0000, #c4302b); }
 .contact-tiktok .contact-icon { background: linear-gradient(135deg, #ff0050, #00f2ea); }
-.contact-twitter .contact-icon { background: linear-gradient(135deg, #1DA1F2, #0c85d0); }
+.contact-twitter .contact-icon { background: linear-gradient(135deg, #000000, #1a1a1a); }
 
 .contact-card:hover .contact-icon { transform: scale(1.1) rotate(5deg); }
 .contact-icon svg { width: 35px; height: 35px; }
