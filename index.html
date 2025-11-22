@@ -3,214 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERSONA 5 ROYAL — Українська Локалізація</title>
-    <meta name="description" content="Українська локалізація Persona 5 Royal від Солов'їної Команди" />
+    <title>PERSONA5 THE ROYAL — УКРАЇНСЬКА ЛОКАЛІЗАЦІЯ</title>
+    <meta name="description" content="Офіційна українська локалізація Persona 5 Royal" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Striped Background -->
-    <div class="bg-stripes"></div>
+    <!-- Red Lines Background Decoration -->
+    <div class="red-lines-bg">
+        <div class="red-line red-line-1"></div>
+        <div class="red-line red-line-2"></div>
+        <div class="red-line red-line-3"></div>
+    </div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-stars">
-            <div class="star star-1">★</div>
-            <div class="star star-2">★</div>
-            <div class="star star-3">★</div>
-            <div class="star star-4">★</div>
-        </div>
+    <!-- Main Container -->
+    <main class="main-container">
 
-        <div class="container">
-            <div class="hero-badge">
-                <span>УКРАЇНСЬКА ЛОКАЛІЗАЦІЯ</span>
-            </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-deco"></div>
 
-            <h1 class="hero-logo">
-                <div class="logo-p5">PERSONA<span class="logo-5">5</span></div>
-                <div class="logo-royal">ROYAL</div>
-            </h1>
+            <div class="hero-content">
+                <div class="logo-container">
+                    <div class="logo-top">PERSONA<span class="logo-number">5</span></div>
+                    <div class="logo-subtitle">THE ROYAL</div>
+                </div>
 
-            <div class="hero-tagline">
-                <div class="tagline-box">
-                    <span>TAKE YOUR HEART!</span>
+                <div class="hero-label">
+                    <span>УКРАЇНСЬКА ЛОКАЛІЗАЦІЯ</span>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="document.getElementById('download-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="btn-text">ЗАВАНТАЖИТИ</span>
+                        <span class="btn-arrow">▶</span>
+                    </button>
                 </div>
             </div>
 
-            <div class="hero-cta">
-                <a href="#download" class="btn-main">
-                    <span>ЗАВАНТАЖИТИ</span>
-                    <div class="btn-arrow">▶</div>
-                </a>
+            <!-- Decorative Elements -->
+            <div class="hero-bg-pattern"></div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="content-section progress-showcase">
+            <div class="section-deco section-deco-left"></div>
+
+            <div class="section-header">
+                <h2 class="section-title">ПРОГРЕС ЛОКАЛІЗАЦІЇ</h2>
+                <div class="title-line"></div>
             </div>
 
-            <!-- Decorative splash -->
-            <div class="splash splash-1"></div>
-            <div class="splash splash-2"></div>
-        </div>
-    </section>
-
-    <!-- Progress -->
-    <section class="progress-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">ПРОГРЕС</span>
-                <div class="title-underline"></div>
-            </h2>
-
-            <div class="progress-grid">
-                <!-- Text -->
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span class="label-icon">📝</span>
-                        <span class="label-text">ТЕКСТ</span>
+            <div class="progress-container">
+                <!-- Text Progress -->
+                <div class="progress-card">
+                    <div class="card-label">
+                        <span class="card-icon">📝</span>
+                        <span class="card-title">ТЕКСТ</span>
                     </div>
-                    <div class="progress-bar-wrap">
-                        <div class="progress-bar" data-progress="85">
-                            <div class="bar-fill"></div>
-                            <div class="bar-percent">85%</div>
+                    <div class="progress-visual">
+                        <div class="progress-track">
+                            <div class="progress-fill" data-progress="85"></div>
                         </div>
+                        <div class="progress-number">85<span class="percent-sign">%</span></div>
                     </div>
-                    <p class="progress-desc">Діалоги, меню та історія</p>
+                    <div class="card-desc">Діалоги та меню</div>
                 </div>
 
-                <!-- Textures -->
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span class="label-icon">🎨</span>
-                        <span class="label-text">ТЕКСТУРИ</span>
+                <!-- Texture Progress -->
+                <div class="progress-card">
+                    <div class="card-label">
+                        <span class="card-icon">🎨</span>
+                        <span class="card-title">ТЕКСТУРИ</span>
                     </div>
-                    <div class="progress-bar-wrap">
-                        <div class="progress-bar" data-progress="72">
-                            <div class="bar-fill"></div>
-                            <div class="bar-percent">72%</div>
+                    <div class="progress-visual">
+                        <div class="progress-track">
+                            <div class="progress-fill" data-progress="72"></div>
                         </div>
+                        <div class="progress-number">72<span class="percent-sign">%</span></div>
                     </div>
-                    <p class="progress-desc">UI елементи та графіка</p>
+                    <div class="card-desc">UI і графіка</div>
                 </div>
 
-                <!-- Models -->
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span class="label-icon">📦</span>
-                        <span class="label-text">3D МОДЕЛІ</span>
+                <!-- Models Progress -->
+                <div class="progress-card">
+                    <div class="card-label">
+                        <span class="card-icon">📦</span>
+                        <span class="card-title">МОДЕЛІ</span>
                     </div>
-                    <div class="progress-bar-wrap">
-                        <div class="progress-bar" data-progress="68">
-                            <div class="bar-fill"></div>
-                            <div class="bar-percent">68%</div>
+                    <div class="progress-visual">
+                        <div class="progress-track">
+                            <div class="progress-fill" data-progress="68"></div>
                         </div>
+                        <div class="progress-number">68<span class="percent-sign">%</span></div>
                     </div>
-                    <p class="progress-desc">Об'єкти та середовища</p>
+                    <div class="card-desc">3D об'єкти</div>
                 </div>
             </div>
 
-            <!-- Overall -->
-            <div class="overall-progress">
-                <div class="overall-header">
-                    <span>ЗАГАЛЬНА ГОТОВНІСТЬ</span>
-                    <span class="overall-num">75%</span>
-                </div>
-                <div class="overall-bar">
-                    <div class="overall-fill" style="width: 75%"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team -->
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">СОЛОВ'ЇНА КОМАНДА</span>
-                <div class="title-underline"></div>
-            </h2>
-
-            <div class="team-content">
-                <div class="team-box">
-                    <div class="box-header">ХТО МИ?</div>
-                    <p>Локалізаційна спілка "Солов'їна Команда" — група ентузіастів, які роблять найкращі японські ігри доступними українською мовою.</p>
-                </div>
-
-                <div class="team-box">
-                    <div class="box-header">НАША МІСІЯ</div>
-                    <p>Створити найякісніший український переклад Persona 5 Royal, зберігаючи унікальний стиль гри.</p>
-                </div>
-
-                <div class="team-box">
-                    <div class="box-header">ЩО МИ РОБИМО?</div>
-                    <p>Повний переклад тексту, адаптація текстур UI, локалізація 3D моделей та українські шрифти.</p>
+            <!-- Overall Progress -->
+            <div class="overall-container">
+                <div class="overall-label">ЗАГАЛЬНА ГОТОВНІСТЬ</div>
+                <div class="overall-progress">
+                    <div class="overall-track">
+                        <div class="overall-fill" data-progress="75"></div>
+                    </div>
+                    <div class="overall-number">75%</div>
                 </div>
             </div>
+        </section>
 
-            <div class="team-stats">
-                <div class="stat">
-                    <div class="stat-num">500K+</div>
+        <!-- Team Section -->
+        <section class="content-section team-showcase">
+            <div class="section-deco section-deco-right"></div>
+
+            <div class="section-header">
+                <h2 class="section-title">СОЛОВ'ЇНА КОМАНДА</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-header">ХТО МИ</div>
+                    <div class="team-body">
+                        <p>Локалізаційна спілка ентузіастів, які створюють найякісніші українські переклади японських ігор</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">МІСІЯ</div>
+                    <div class="team-body">
+                        <p>Зробити Persona 5 Royal доступною українською мовою, зберігаючи унікальний стиль гри</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">РОБОТА</div>
+                    <div class="team-body">
+                        <p>Повний переклад тексту, адаптація UI, локалізація моделей та створення шрифтів</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-value">500K+</div>
                     <div class="stat-label">РЯДКІВ</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-num">2000+</div>
+                <div class="stat-box">
+                    <div class="stat-value">2000+</div>
                     <div class="stat-label">ТЕКСТУР</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-num">150+</div>
+                <div class="stat-box">
+                    <div class="stat-value">150+</div>
                     <div class="stat-label">МОДЕЛЕЙ</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Download -->
-    <section id="download" class="download-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">РАННІЙ ДОСТУП</span>
-                <div class="title-underline"></div>
-            </h2>
+        <!-- Download Section -->
+        <section id="download-section" class="content-section download-showcase">
+            <div class="section-deco section-deco-center"></div>
 
-            <div class="download-box">
-                <div class="download-warning">
-                    <span class="warning-icon">⚠</span>
-                    <p>РАННІЙ ДОСТУП — деякі елементи можуть бути неперекладені</p>
-                </div>
+            <div class="section-header">
+                <h2 class="section-title">ЗАВАНТАЖИТИ</h2>
+                <div class="title-line"></div>
+            </div>
 
-                <a href="#" class="btn-download">
-                    <span class="btn-icon">⬇</span>
-                    <div class="btn-text">
-                        <span class="btn-main-text">ЗАВАНТАЖИТИ</span>
-                        <span class="btn-sub-text">Версія 0.8.5 Beta</span>
+            <div class="download-container">
+                <div class="download-warning-box">
+                    <div class="warning-icon">⚠</div>
+                    <div class="warning-text">
+                        <strong>РАННІЙ ДОСТУП</strong>
+                        <span>Деякі елементи можуть бути неперекладені</span>
                     </div>
-                </a>
+                </div>
 
-                <div class="download-info">
-                    <span>PC (Steam)</span>
-                    <span>~250 MB</span>
-                    <span>22.11.2025</span>
+                <button class="btn-download">
+                    <div class="download-icon">⬇</div>
+                    <div class="download-info">
+                        <div class="download-title">ЗАВАНТАЖИТИ ЛОКАЛІЗАЦІЮ</div>
+                        <div class="download-version">Версія 0.8.5 Beta · PC (Steam) · 250 MB</div>
+                    </div>
+                </button>
+
+                <div class="download-meta">
+                    <span>Оновлено: 22.11.2025</span>
                 </div>
             </div>
 
-            <div class="social-links">
-                <a href="https://t.me/LittleBitUA" class="social-btn">
-                    <span>TELEGRAM</span>
+            <!-- Social Links -->
+            <div class="social-container">
+                <a href="https://t.me/LittleBitUA" class="social-link">
+                    <span class="social-icon">📱</span>
+                    <span class="social-text">TELEGRAM</span>
                 </a>
-                <a href="https://discord.gg/littlebitua" class="social-btn">
-                    <span>DISCORD</span>
+                <a href="https://discord.gg/littlebitua" class="social-link">
+                    <span class="social-icon">💬</span>
+                    <span class="social-text">DISCORD</span>
                 </a>
-                <a href="https://www.youtube.com/@UA_LittleBit/" class="social-btn">
-                    <span>YOUTUBE</span>
+                <a href="https://www.youtube.com/@UA_LittleBit/" class="social-link">
+                    <span class="social-icon">📺</span>
+                    <span class="social-text">YOUTUBE</span>
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Солов'їна Команда · Persona 5 Royal © ATLUS/SEGA</p>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2025 Солов'їна Команда</p>
+            <p>Persona 5 Royal © ATLUS · SEGA · All rights reserved</p>
             <p>Фан-переклад · Неофіційний проект</p>
         </div>
     </footer>

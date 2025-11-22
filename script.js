@@ -1,62 +1,40 @@
 // ==========================================
-// PERSONA 5 ROYAL - AUTHENTIC STYLE
-// JavaScript for animations
+// PERSONA 5 ROYAL - OFFICIAL STYLE
+// Animated Progress & Interactions
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+
     // ==========================================
-    // PROGRESS BARS ANIMATION
+    // PROGRESS BAR ANIMATIONS
     // ==========================================
-    const progressBars = document.querySelectorAll('.progress-bar');
-    const overallFill = document.querySelector('.overall-fill');
+    function animateProgressBars() {
+        const progressFills = document.querySelectorAll('.progress-fill');
+        const overallFill = document.querySelector('.overall-fill');
 
-    // Animate individual progress bars
-    function animateProgressBar(bar) {
-        const targetValue = parseInt(bar.getAttribute('data-progress'));
-        const fill = bar.querySelector('.bar-fill');
-        const percent = bar.querySelector('.bar-percent');
-
-        if (!fill || !percent) return;
-
-        // Animate width
-        setTimeout(() => {
-            fill.style.width = targetValue + '%';
-        }, 100);
-
-        // Animate number count
-        let currentValue = 0;
-        const increment = targetValue / 60;
-        const duration = 1500;
-        const frameTime = duration / 60;
-
-        const interval = setInterval(() => {
-            currentValue += increment;
-            if (currentValue >= targetValue) {
-                currentValue = targetValue;
-                clearInterval(interval);
-            }
-            percent.textContent = Math.round(currentValue) + '%';
-        }, frameTime);
-    }
-
-    // Animate overall progress
-    function animateOverallProgress() {
-        if (!overallFill) return;
-
-        const targetValue = parseInt(overallFill.style.width);
-        if (!targetValue) {
-            // Calculate from existing inline style if set
-            const match = overallFill.style.width.match(/(\d+)%/);
-            if (match) {
+        // Animate individual progress bars
+        progressFills.forEach(fill => {
+            const targetWidth = fill.getAttribute('data-progress');
+            if (targetWidth) {
                 setTimeout(() => {
-                    overallFill.style.width = match[1] + '%';
+                    fill.style.width = targetWidth + '%';
                 }, 200);
+            }
+        });
+
+        // Animate overall progress
+        if (overallFill) {
+            const targetWidth = overallFill.getAttribute('data-progress');
+            if (targetWidth) {
+                setTimeout(() => {
+                    overallFill.style.width = targetWidth + '%';
+                }, 400);
             }
         }
     }
 
     // ==========================================
-    // INTERSECTION OBSERVER FOR SCROLL REVEALS
+    // INTERSECTION OBSERVER - Scroll Animations
     // ==========================================
     const observerOptions = {
         threshold: 0.2,
@@ -66,16 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Add active class for fade-in
                 entry.target.classList.add('active');
 
-                // Animate progress bars when they come into view
-                if (entry.target.classList.contains('progress-bar')) {
-                    animateProgressBar(entry.target);
-                }
-
-                // Animate overall progress
-                if (entry.target.classList.contains('overall-progress')) {
-                    animateOverallProgress();
+                // Trigger progress bar animations when section is visible
+                if (entry.target.classList.contains('progress-showcase')) {
+                    animateProgressBars();
                 }
 
                 // Unobserve after animation
@@ -84,16 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Observe all progress bars
-    progressBars.forEach(bar => {
-        observer.observe(bar);
+    // Observe all content sections
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        observer.observe(section);
     });
-
-    // Observe overall progress
-    const overallProgress = document.querySelector('.overall-progress');
-    if (overallProgress) {
-        observer.observe(overallProgress);
-    }
 
     // ==========================================
     // SMOOTH SCROLL FOR ANCHOR LINKS
@@ -106,73 +75,55 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                const targetPosition = target.offsetTop - 20;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
 
     // ==========================================
-    // BUTTON RIPPLE EFFECT
+    // BUTTON HOVER EFFECTS
     // ==========================================
-    const buttons = document.querySelectorAll('.btn-main, .btn-download, .social-btn');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-download');
 
     buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+        });
 
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-
-            // Prevent multiple ripples
-            const existingRipple = this.querySelector('.ripple');
-            if (existingRipple) {
-                existingRipple.remove();
-            }
-
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
         });
     });
 
-    // Add ripple styles dynamically
-    if (!document.querySelector('#ripple-styles')) {
-        const style = document.createElement('style');
-        style.id = 'ripple-styles';
-        style.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.6);
-                transform: scale(0);
-                animation: rippleAnimation 0.6s ease-out;
-                pointer-events: none;
-            }
+    // ==========================================
+    // CARD INTERACTIONS
+    // ==========================================
+    const cards = document.querySelectorAll('.progress-card, .team-card, .stat-box');
 
-            @keyframes rippleAnimation {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.3s ease';
+        });
+    });
 
     // ==========================================
-    // PERFORMANCE: REDUCE MOTION FOR USERS WHO PREFER IT
+    // PARALLAX EFFECT ON RED LINES
+    // ==========================================
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const redLines = document.querySelectorAll('.red-line');
+
+        redLines.forEach((line, index) => {
+            const speed = 0.2 + (index * 0.1);
+            line.style.transform = `translateY(${scrolled * speed}px) rotate(${-15 + (index * 20)}deg)`;
+        });
+    });
+
+    // ==========================================
+    // ACCESSIBILITY - Reduce Motion Support
     // ==========================================
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -187,22 +138,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // LOG INITIALIZATION
     // ==========================================
-    console.log('%c[P5R UA] 🎭 Persona 5 Royal - Ukrainian Localization', 'background: #E60012; color: white; font-size: 16px; padding: 10px; font-weight: bold;');
-    console.log('%cСайт успішно завантажено!', 'color: #E60012; font-size: 14px;');
-    console.log('%cСпасибі, що підтримуєте українську локалізацію! 💙💛', 'color: #0057B7; font-size: 14px;');
+    console.log('%c[P5R] PERSONA 5 ROYAL — УКРАЇНСЬКА ЛОКАЛІЗАЦІЯ',
+        'background: #E60012; color: white; font-size: 16px; padding: 10px; font-weight: bold;');
+    console.log('%cСайт завантажено у стилі офіційного P5R!',
+        'color: #E60012; font-size: 12px;');
+    console.log('%cСолов\'їна Команда © 2025',
+        'color: #666; font-size: 10px;');
 });
 
 // ==========================================
-// LOADING ANIMATION
+// LOADING COMPLETE
 // ==========================================
 window.addEventListener('load', () => {
-    // Hide loading screen if exists
-    const loader = document.querySelector('.loader');
-    if (loader) {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 300);
-    }
-
-    // Trigger entry animations
     document.body.classList.add('loaded');
+
+    // Trigger initial animations
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+        heroSection.classList.add('active');
+    }
 });
