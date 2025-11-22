@@ -2,314 +2,386 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Primary Meta Tags -->
-    <title>«Little Bit» — українські локалізації ігор</title>
-    <meta name="title" content="«Little Bit» — українські локалізації ігор" />
-    <meta name="description" content="Українські локалізації відеоігор: Judgment, Yakuza, No More Heroes, Deadly Premonition, HOTEL BARCELONA, JoJo's Bizarre Adventure: All-Star Battle R, Dispatch та інших!" />
+    <title>Persona 5 Royal — Українська Локалізація | Солов'їна Команда</title>
+    <meta name="description" content="Офіційна українська локалізація Persona 5 Royal від Солов'їної Команди. Текст, текстури, 3D моделі — все українською!" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://littlebitua.github.io/" />
-    <meta property="og:title" content="«Little Bit» — українські локалізації ігор" />
-    <meta property="og:description" content="Українські локалізації відеоігор: Judgment, Yakuza, No More Heroes, Deadly Premonition, HOTEL BARCELONA, JoJo's Bizarre Adventure: All-Star Battle R, Dispatch та інших!" />
-    <meta property="og:image" content="https://littlebitua.github.io/assets/logo.png" />
+    <meta property="og:title" content="Persona 5 Royal — Українська Локалізація" />
+    <meta property="og:description" content="Офіційна українська локалізація Persona 5 Royal від Солов'їної Команди" />
 
-    <!-- X (Twitter) -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://littlebitua.github.io/" />
-    <meta property="twitter:title" content="«Little Bit» — українські локалізації ігор" />
-    <meta property="twitter:description" content="Українські локалізації відеоігор: Judgment, Yakuza, No More Heroes, Deadly Premonition, HOTEL BARCELONA, JoJo's Bizarre Adventure: All-Star Battle R, Dispatch та інших!" />
-    <meta property="twitter:image" content="https://littlebitua.github.io/assets/logo.png" />
-
-    <!-- Cache control -->
-    <meta http-equiv="Cache-Control" content="max-age=3600, must-revalidate">
-
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-    <!-- Preload першого слайда новин для швидкого завантаження -->
-    <link rel="preload" as="image" href="assets/Uncharted1_news.webp?v=1.4.1">
-
-    <link rel="stylesheet" href="style.css?v=1.4.1">
+    <link rel="stylesheet" href="p5r-style.css">
 </head>
 <body>
-
-    <div class="ambient-bg">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="blob b3"></div>
+    <!-- Background Animation -->
+    <div class="p5r-bg">
+        <div class="red-streaks"></div>
+        <div class="diagonal-lines"></div>
         <div class="noise-overlay"></div>
     </div>
 
-    <nav class="glass-nav">
-        <div class="container nav-inner">
-            <div class="logo">«Little <span>Bit</span>»</div>
-            <div class="nav-items">
-                <a href="#projects" class="nav-link" data-i18n="nav_projects">Проєкти</a>
-                <a href="#support" class="nav-link" data-i18n="nav_support">Підтримка</a>
-                <a href="#contacts" class="nav-link" data-i18n="nav_contacts">Контакти</a>
-                <div class="lang-toggle">
-                    <span class="lang-opt active" onclick="setLang('uk')">UA</span> / <span class="lang-opt" onclick="setLang('en')">EN</span>
+    <!-- Navigation -->
+    <nav class="p5r-nav">
+        <div class="container">
+            <div class="logo-area">
+                <div class="logo-text">
+                    <span class="logo-p5">P5R</span>
+                    <span class="logo-divider">/</span>
+                    <span class="logo-ua">UA</span>
                 </div>
             </div>
+            <div class="nav-links">
+                <a href="#progress" class="nav-link">ПРОГРЕС</a>
+                <a href="#team" class="nav-link">КОМАНДА</a>
+                <a href="#download" class="nav-link nav-link-cta">РАННІЙ ДОСТУП</a>
+            </div>
+            <button class="menu-toggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <main class="container">
-        <section class="hero">
-            <h1 data-i18n="hero_title">Грайте українською —<br>відчувайте по-новому.</h1>
-            <p class="hero-lead" data-i18n="hero_lead">Улюблені історії — українською, від серця.</p>
-
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-val" id="stat-count">0</span>
-                    <span class="stat-lbl" data-i18n="stat_projects">ПРОЄКТІВ</span>
-                </div>
-                <div class="stat" data-label="avg">
-                    <span class="stat-val" id="stat-avg">0%</span>
-                    <span class="stat-lbl" data-i18n="stat_avg">СЕР. ГОТОВНІСТЬ</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-val" id="stat-ea">0</span>
-                    <span class="stat-lbl" data-i18n="stat_ea">РАННІЙ ДОСТУП</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEWS SLIDER -->
-        <section class="news-slider-wrapper">
-            <div class="news-slider-header">
-                <h2 data-i18n="news_title">НОВИНИ</h2>
-            </div>
-            <div class="news-slider">
-                <div class="slider-track">
-                    <!-- Слайди рендеряться динамічно з news-data.js -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span class="tag-text">УКРАЇНСЬКА ЛОКАЛІЗАЦІЯ</span>
+                    <div class="tag-underline"></div>
                 </div>
 
-                <div class="slider-controls">
-                    <div class="slider-dots"></div>
-                    <button class="slider-nav slider-prev" aria-label="Попередня новина">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
-                    </button>
-                    <button class="slider-nav slider-next" aria-label="Наступна новина">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
+                <h1 class="hero-title">
+                    <span class="title-line">PERSONA 5</span>
+                    <span class="title-line title-royal">ROYAL</span>
+                </h1>
+
+                <div class="hero-subtitle">
+                    <div class="subtitle-box">
+                        <span>TAKE YOUR HEART</span>
+                    </div>
+                    <p class="subtitle-text">Пориньте у світ Фантомних Злодіїв українською мовою</p>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="#download" class="btn-primary">
+                        <span class="btn-bg"></span>
+                        <span class="btn-text">СПРОБУВАТИ ЗАРАЗ</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="#progress" class="btn-secondary">
+                        <span class="btn-text">ПЕРЕГЛЯНУТИ ПРОГРЕС</span>
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <div class="controls">
-            <div class="search-wrap">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="search" placeholder="Пошук..." data-i18n-placeholder="search_ph">
-            </div>
-            <div class="filters">
-                <button class="f-btn active" data-filter="all" data-i18n="filter_all">Всі</button>
-                <button class="f-btn" data-filter="in-progress" data-i18n="filter_in_progress">В процесі</button>
-                <button class="f-btn" data-filter="fundraising" data-i18n="filter_fundraising">Збір</button>
-                <button class="f-btn" data-filter="early-access" data-i18n="filter_early_access">Ранній доступ</button>
+            <!-- Animated Character Silhouette -->
+            <div class="hero-character">
+                <div class="character-silhouette"></div>
             </div>
         </div>
 
-        <section id="projects" class="projects-grid"></section>
+        <!-- Scrolling Text -->
+        <div class="scroll-hint">
+            <span>ПРОКРУТІТЬ ВНИЗ</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
-        <section id="contacts" class="contacts-section">
-            <div class="container">
-                <div class="contacts-header">
-                    <h2 data-i18n="contacts_title">Контакти</h2>
-                    <p data-i18n="contacts_text" class="contacts-lead">Слідкуйте за звітами та оновленнями у наших соціальних мережах</p>
+    <!-- Progress Section -->
+    <section id="progress" class="progress-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span>STATUS REPORT</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="glitch" data-text="ПРОГРЕС ЛОКАЛІЗАЦІЇ">ПРОГРЕС ЛОКАЛІЗАЦІЇ</span>
+                </h2>
+            </div>
+
+            <div class="progress-grid">
+                <!-- Text Progress -->
+                <div class="progress-card" data-category="text">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 7h16M4 12h16M4 17h10"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">ТЕКСТ</h3>
+                    </div>
+                    <div class="card-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="85"></div>
+                            <div class="progress-shine"></div>
+                        </div>
+                        <div class="progress-label">
+                            <span class="progress-percent">0%</span>
+                            <span class="progress-status">В ПРОЦЕСІ</span>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <p>Діалоги, меню та історія повністю перекладені українською</p>
+                    </div>
                 </div>
 
-                <div class="contacts-grid">
-                    <a href="https://t.me/LittleBitUA" target="_blank" class="contact-card contact-telegram">
-                        <div class="contact-bg"></div>
-                        <div class="contact-gradient"></div>
-                        <div class="contact-content">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M23.1117 4.49449C23.4296 2.94472 21.9074 1.65683 20.4317 2.227L2.3425 9.21601C0.694517 9.85273 0.621087 12.1572 2.22518 12.8975L6.1645 14.7157L8.03849 21.2746C8.13583 21.6153 8.40618 21.8791 8.74917 21.968C9.09216 22.0568 9.45658 21.9576 9.70712 21.707L12.5938 18.8203L16.6375 21.8531C17.8113 22.7334 19.5019 22.0922 19.7967 20.6549L23.1117 4.49449Z"/>
-                                </svg>
-                            </div>
-                            <h3>Telegram</h3>
-                            <div class="contact-link">
-                                <span>Перейти</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </div>
+                <!-- Textures Progress -->
+                <div class="progress-card" data-category="textures">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18M9 3v18"/>
+                            </svg>
                         </div>
-                        <div class="contact-particles">
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                            <div class="particle"></div>
+                        <h3 class="card-title">ТЕКСТУРИ</h3>
+                    </div>
+                    <div class="card-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="72"></div>
+                            <div class="progress-shine"></div>
                         </div>
-                    </a>
+                        <div class="progress-label">
+                            <span class="progress-percent">0%</span>
+                            <span class="progress-status">В ПРОЦЕСІ</span>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <p>UI елементи, знаки та графіка адаптовані під українську</p>
+                    </div>
+                </div>
 
-                    <a href="https://www.youtube.com/@UA_LittleBit/" target="_blank" class="contact-card contact-youtube">
-                        <div class="contact-bg"></div>
-                        <div class="contact-gradient"></div>
-                        <div class="contact-content">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                                </svg>
-                            </div>
-                            <h3>YouTube</h3>
-                            <div class="contact-link">
-                                <span>Перейти</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </div>
+                <!-- 3D Models Progress -->
+                <div class="progress-card" data-category="models">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
                         </div>
-                        <div class="contact-particles">
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                            <div class="particle"></div>
+                        <h3 class="card-title">3D МОДЕЛІ</h3>
+                    </div>
+                    <div class="card-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="68"></div>
+                            <div class="progress-shine"></div>
                         </div>
-                    </a>
-
-                    <a href="https://www.tiktok.com/@littlebit_ua" target="_blank" class="contact-card contact-tiktok">
-                        <div class="contact-bg"></div>
-                        <div class="contact-gradient"></div>
-                        <div class="contact-content">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                                </svg>
-                            </div>
-                            <h3>TikTok</h3>
-                            <div class="contact-link">
-                                <span>Перейти</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </div>
+                        <div class="progress-label">
+                            <span class="progress-percent">0%</span>
+                            <span class="progress-status">В ПРОЦЕСІ</span>
                         </div>
-                        <div class="contact-particles">
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                        </div>
-                    </a>
-
-                    <a href="https://x.com/LittleBitUA" target="_blank" class="contact-card contact-twitter">
-                        <div class="contact-bg"></div>
-                        <div class="contact-gradient"></div>
-                        <div class="contact-content">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                </svg>
-                            </div>
-                            <h3>X (Twitter)</h3>
-                            <div class="contact-link">
-                                <span>Перейти</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="contact-particles">
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                        </div>
-                    </a>
+                    </div>
+                    <div class="card-details">
+                        <p>Об'єкти та середовища з українськими написами</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section id="support" class="support-section">
-            <div class="container">
-                <div class="support-header">
-                    <h2 data-i18n="support_title">Фінансова підтримка</h2>
-                    <p data-i18n="support_text" class="support-lead">Підтримайте нас донатом, і ми зможемо швидше випускати нові українські локалізації</p>
+            <!-- Overall Progress -->
+            <div class="overall-progress">
+                <div class="overall-header">
+                    <h3>ЗАГАЛЬНА ГОТОВНІСТЬ</h3>
+                    <span class="overall-percent">0%</span>
                 </div>
-
-                <div class="support-card-wrapper">
-                    <a href="https://donatello.to/LittleBitUA" target="_blank" class="support-donate-card">
-                        <div class="donate-bg"></div>
-                        <div class="donate-gradient"></div>
-                        <div class="donate-content">
-                            <div class="donate-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                </svg>
-                            </div>
-                            <h3>Donatello</h3>
-                            <div class="donate-link">
-                                <span>Підтримати</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="donate-particles">
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                        </div>
-                    </a>
-
-                    <a href="https://send.monobank.ua/jar/3h4akVJRXK" target="_blank" class="support-donate-card">
-                        <div class="donate-bg"></div>
-                        <div class="donate-gradient"></div>
-                        <div class="donate-content">
-                            <div class="donate-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <text x="12" y="17" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor" stroke="none">₴</text>
-                                </svg>
-                            </div>
-                            <h3>Monobank</h3>
-                            <div class="donate-link">
-                                <span>Підтримати</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="donate-particles">
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                        </div>
-                    </a>
+                <div class="overall-bar">
+                    <div class="overall-fill" data-progress="75"></div>
+                    <div class="overall-segments">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="benefactors" class="benefactors-section">
-            <h3 data-i18n="benefactors_title" style="margin-bottom:30px; font-family: var(--font-head); font-size: 2.5rem;">Доброчинці</h3>
-            <div id="benefactors-list" class="benefactors-list"></div>
-        </section>
-    </main>
-
-    <div id="modal" class="modal-backdrop">
-        <div class="modal-content">
-            <button class="modal-close">✕</button>
-            <div class="modal-body">
-                <div style="text-align: center;">
-                    <img id="m-logo" class="m-logo" src="" alt="">
-                </div>
-                <div id="m-stats" class="stats-box"></div>
-                <p id="m-desc" style="color:#cbd5e1; line-height:1.6; margin-bottom:20px"></p>
-                <div id="m-video"></div>
-                <div id="m-actions" style="display:flex; gap:10px"></div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="data.js?v=1.4.1"></script>
-    <script src="news-data.js?v=1.4.1"></script>
-    <script src="script.js?v=1.4.1"></script>
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span>THE PHANTOM TRANSLATORS</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="glitch" data-text="СОЛОВ'ЇНА КОМАНДА">СОЛОВ'ЇНА КОМАНДА</span>
+                </h2>
+            </div>
+
+            <div class="team-content">
+                <div class="team-info">
+                    <div class="info-box">
+                        <div class="info-icon">🎭</div>
+                        <div class="info-text">
+                            <h3>Хто ми?</h3>
+                            <p>Локалізаційна спілка "Солов'їна Команда" — це група ентузіастів, які прагнуть зробити найкращі японські ігри доступними українською мовою. Ми працюємо з повагою до оригіналу та любов'ю до рідної мови.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon">⚡</div>
+                        <div class="info-text">
+                            <h3>Наша місія</h3>
+                            <p>Створити найякісніший український переклад Persona 5 Royal, зберігаючи унікальний стиль гри та адаптуючи жарти, культурні відсилання та характери персонажів для українських гравців.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon">🎮</div>
+                        <div class="info-text">
+                            <h3>Що ми робимо?</h3>
+                            <p>Повний переклад тексту, адаптація текстур UI, локалізація 3D моделей та створення українських шрифтів. Кожен елемент гри ретельно опрацьовується нашою командою.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">500K+</div>
+                        <div class="stat-label">Рядків тексту</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2000+</div>
+                        <div class="stat-label">Текстур UI</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">3D моделей</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Любові до справи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <div class="download-content">
+                <div class="download-header">
+                    <div class="section-tag">
+                        <span>EARLY ACCESS</span>
+                    </div>
+                    <h2 class="section-title">
+                        <span class="glitch" data-text="РАННІЙ ДОСТУП">РАННІЙ ДОСТУП</span>
+                    </h2>
+                    <p class="download-description">
+                        Спробуйте українську локалізацію Persona 5 Royal вже зараз!
+                        Ранній доступ включає всі доступні переклади та оновлення.
+                    </p>
+                </div>
+
+                <div class="download-box">
+                    <div class="download-notice">
+                        <div class="notice-icon">⚠️</div>
+                        <div class="notice-text">
+                            <strong>УВАГА:</strong> Це ранній доступ. Деякі елементи можуть бути неперекладеними
+                            або містити помилки. Ми активно працюємо над покращенням локалізації.
+                        </div>
+                    </div>
+
+                    <div class="download-actions">
+                        <a href="#" class="btn-download">
+                            <span class="btn-bg"></span>
+                            <div class="btn-content">
+                                <div class="btn-icon-large">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="7 10 12 15 17 10"/>
+                                        <line x1="12" y1="15" x2="12" y2="3"/>
+                                    </svg>
+                                </div>
+                                <div class="btn-text-content">
+                                    <span class="btn-text-large">ЗАВАНТАЖИТИ</span>
+                                    <span class="btn-text-small">Версія 0.8.5 Beta</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="btn-instructions">
+                            <span class="btn-text">ІНСТРУКЦІЯ З ВСТАНОВЛЕННЯ</span>
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </div>
+
+                    <div class="download-info">
+                        <div class="info-item">
+                            <strong>Платформа:</strong> PC (Steam)
+                        </div>
+                        <div class="info-item">
+                            <strong>Розмір:</strong> ~250 MB
+                        </div>
+                        <div class="info-item">
+                            <strong>Оновлено:</strong> <span class="update-date">12 листопада 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <p class="social-text">Слідкуйте за новинами та оновленнями:</p>
+                    <div class="social-buttons">
+                        <a href="https://t.me/LittleBitUA" target="_blank" class="social-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.1117 4.49449C23.4296 2.94472 21.9074 1.65683 20.4317 2.227L2.3425 9.21601C0.694517 9.85273 0.621087 12.1572 2.22518 12.8975L6.1645 14.7157L8.03849 21.2746C8.13583 21.6153 8.40618 21.8791 8.74917 21.968C9.09216 22.0568 9.45658 21.9576 9.70712 21.707L12.5938 18.8203L16.6375 21.8531C17.8113 22.7334 19.5019 22.0922 19.7967 20.6549L23.1117 4.49449Z"/>
+                            </svg>
+                            <span>Telegram</span>
+                        </a>
+                        <a href="https://discord.gg/littlebitua" target="_blank" class="social-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                            </svg>
+                            <span>Discord</span>
+                        </a>
+                        <a href="https://www.youtube.com/@UA_LittleBit/" target="_blank" class="social-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p5r-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-text">
+                        <span class="logo-p5">P5R</span>
+                        <span class="logo-divider">/</span>
+                        <span class="logo-ua">UA</span>
+                    </div>
+                    <p>Українська локалізація</p>
+                </div>
+
+                <div class="footer-info">
+                    <p>© 2025 Солов'їна Команда. Фан-переклад.</p>
+                    <p>Persona 5 Royal © ATLUS / SEGA. Всі права захищені.</p>
+                    <p>Це неофіційний фан-проект, створений з любов'ю до гри.</p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="https://littlebitua.github.io/" target="_blank">Головний сайт Little Bit</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="p5r-script.js"></script>
 </body>
 </html>
