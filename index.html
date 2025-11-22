@@ -8,208 +8,191 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Red Lines Background Decoration -->
-    <div class="red-lines-bg">
-        <div class="red-line red-line-1"></div>
-        <div class="red-line red-line-2"></div>
-        <div class="red-line red-line-3"></div>
-    </div>
-
     <!-- Main Container -->
-    <main class="main-container">
+    <main class="main-wrapper">
 
         <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-deco"></div>
+        <section class="hero-splash">
+            <!-- Sparkle stars -->
+            <div class="sparkle sparkle-1"></div>
+            <div class="sparkle sparkle-2"></div>
+            <div class="sparkle sparkle-3"></div>
+            <div class="sparkle sparkle-4"></div>
 
-            <div class="hero-content">
-                <div class="logo-container">
-                    <div class="logo-top">PERSONA<span class="logo-number">5</span></div>
-                    <div class="logo-subtitle">THE ROYAL</div>
+            <div class="hero-inner">
+                <div class="phantom-life-logo">
+                    <h1>PHANTOM LIFE</h1>
                 </div>
 
-                <div class="hero-label">
+                <div class="hero-subtitle-box">
                     <span>УКРАЇНСЬКА ЛОКАЛІЗАЦІЯ</span>
                 </div>
 
-                <div class="hero-actions">
-                    <button class="btn-primary" onclick="document.getElementById('download-section').scrollIntoView({behavior: 'smooth'})">
-                        <span class="btn-text">ЗАВАНТАЖИТИ</span>
-                        <span class="btn-arrow">▶</span>
-                    </button>
+                <div class="hero-cta-zone">
+                    <a href="#download-zone" class="btn-stylish">
+                        <span class="btn-bg-gold"></span>
+                        <span class="btn-label">ЗАВАНТАЖИТИ</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- Decorative Elements -->
-            <div class="hero-bg-pattern"></div>
+            <!-- Diagonal stripes -->
+            <div class="diagonal-stripe stripe-1"></div>
+            <div class="diagonal-stripe stripe-2"></div>
         </section>
 
-        <!-- Progress Section -->
-        <section class="content-section progress-showcase">
-            <div class="section-deco section-deco-left"></div>
-
-            <div class="section-header">
-                <h2 class="section-title">ПРОГРЕС ЛОКАЛІЗАЦІЇ</h2>
-                <div class="title-line"></div>
+        <!-- Progress Info -->
+        <section class="info-block progress-info">
+            <div class="section-title-torn">
+                <h2>
+                    <span class="torn-piece torn-1">Про</span>
+                    <span class="torn-piece torn-2">грес</span>
+                    <span class="torn-piece torn-3">Локалізації</span>
+                </h2>
             </div>
 
-            <div class="progress-container">
-                <!-- Text Progress -->
-                <div class="progress-card">
-                    <div class="card-label">
-                        <span class="card-icon">📝</span>
-                        <span class="card-title">ТЕКСТ</span>
-                    </div>
-                    <div class="progress-visual">
-                        <div class="progress-track">
-                            <div class="progress-fill" data-progress="85"></div>
+            <div class="progress-panels">
+                <!-- Text -->
+                <div class="panel-tilted">
+                    <div class="panel-inner">
+                        <div class="panel-header">
+                            <span class="header-icon">📝</span>
+                            <span class="header-title">ТЕКСТ</span>
                         </div>
-                        <div class="progress-number">85<span class="percent-sign">%</span></div>
+                        <div class="panel-progress">
+                            <div class="progress-bar-p5" data-progress="85">
+                                <div class="bar-fill-p5"></div>
+                            </div>
+                            <div class="progress-percent">85%</div>
+                        </div>
+                        <p class="panel-info">Діалоги та меню</p>
                     </div>
-                    <div class="card-desc">Діалоги та меню</div>
                 </div>
 
-                <!-- Texture Progress -->
-                <div class="progress-card">
-                    <div class="card-label">
-                        <span class="card-icon">🎨</span>
-                        <span class="card-title">ТЕКСТУРИ</span>
-                    </div>
-                    <div class="progress-visual">
-                        <div class="progress-track">
-                            <div class="progress-fill" data-progress="72"></div>
+                <!-- Textures -->
+                <div class="panel-tilted">
+                    <div class="panel-inner">
+                        <div class="panel-header">
+                            <span class="header-icon">🎨</span>
+                            <span class="header-title">ТЕКСТУРИ</span>
                         </div>
-                        <div class="progress-number">72<span class="percent-sign">%</span></div>
+                        <div class="panel-progress">
+                            <div class="progress-bar-p5" data-progress="72">
+                                <div class="bar-fill-p5"></div>
+                            </div>
+                            <div class="progress-percent">72%</div>
+                        </div>
+                        <p class="panel-info">UI і графіка</p>
                     </div>
-                    <div class="card-desc">UI і графіка</div>
                 </div>
 
-                <!-- Models Progress -->
-                <div class="progress-card">
-                    <div class="card-label">
-                        <span class="card-icon">📦</span>
-                        <span class="card-title">МОДЕЛІ</span>
-                    </div>
-                    <div class="progress-visual">
-                        <div class="progress-track">
-                            <div class="progress-fill" data-progress="68"></div>
+                <!-- Models -->
+                <div class="panel-tilted">
+                    <div class="panel-inner">
+                        <div class="panel-header">
+                            <span class="header-icon">📦</span>
+                            <span class="header-title">МОДЕЛІ</span>
                         </div>
-                        <div class="progress-number">68<span class="percent-sign">%</span></div>
+                        <div class="panel-progress">
+                            <div class="progress-bar-p5" data-progress="68">
+                                <div class="bar-fill-p5"></div>
+                            </div>
+                            <div class="progress-percent">68%</div>
+                        </div>
+                        <p class="panel-info">3D об'єкти</p>
                     </div>
-                    <div class="card-desc">3D об'єкти</div>
                 </div>
             </div>
 
-            <!-- Overall Progress -->
-            <div class="overall-container">
+            <!-- Overall -->
+            <div class="overall-panel">
                 <div class="overall-label">ЗАГАЛЬНА ГОТОВНІСТЬ</div>
-                <div class="overall-progress">
+                <div class="overall-wrapper">
                     <div class="overall-track">
-                        <div class="overall-fill" data-progress="75"></div>
+                        <div class="overall-bar" data-progress="75"></div>
                     </div>
                     <div class="overall-number">75%</div>
                 </div>
             </div>
         </section>
 
-        <!-- Team Section -->
-        <section class="content-section team-showcase">
-            <div class="section-deco section-deco-right"></div>
-
-            <div class="section-header">
-                <h2 class="section-title">СОЛОВ'ЇНА КОМАНДА</h2>
-                <div class="title-line"></div>
+        <!-- About Persona -->
+        <section class="info-block about-section">
+            <div class="about-title-italic">
+                <h2>About <span class="title-gold">Persona</span></h2>
             </div>
 
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-header">ХТО МИ</div>
-                    <div class="team-body">
-                        <p>Локалізаційна спілка ентузіастів, які створюють найякісніші українські переклади японських ігор</p>
-                    </div>
+            <div class="about-content-grid">
+                <div class="about-text-block">
+                    <p>Persona 5 Royal — це RPG, що розгортається в сучасній Японії. Гра відома своїм унікальним стилем протистояння повсякденним реаліям, таким як дружба та романи, поряд з надприродними та паранормальними темами.</p>
+                    <p>Гравці відкривають таємничі чутки та міські легенди, керуючи групою підлітків, які виявляють свої здібності як користувачі Персон.</p>
                 </div>
 
-                <div class="team-card">
-                    <div class="team-header">МІСІЯ</div>
-                    <div class="team-body">
-                        <p>Зробити Persona 5 Royal доступною українською мовою, зберігаючи унікальний стиль гри</p>
+                <div class="about-team-block">
+                    <h3 class="team-subtitle">СОЛОВ'ЇНА КОМАНДА</h3>
+                    <div class="team-stats-mini">
+                        <div class="stat-mini">
+                            <div class="stat-value-mini">500K+</div>
+                            <div class="stat-label-mini">РЯДКІВ</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-value-mini">2000+</div>
+                            <div class="stat-label-mini">ТЕКСТУР</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-value-mini">150+</div>
+                            <div class="stat-label-mini">МОДЕЛЕЙ</div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-header">РОБОТА</div>
-                    <div class="team-body">
-                        <p>Повний переклад тексту, адаптація UI, локалізація моделей та створення шрифтів</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div class="stats-container">
-                <div class="stat-box">
-                    <div class="stat-value">500K+</div>
-                    <div class="stat-label">РЯДКІВ</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">2000+</div>
-                    <div class="stat-label">ТЕКСТУР</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">150+</div>
-                    <div class="stat-label">МОДЕЛЕЙ</div>
                 </div>
             </div>
         </section>
 
-        <!-- Download Section -->
-        <section id="download-section" class="content-section download-showcase">
-            <div class="section-deco section-deco-center"></div>
-
-            <div class="section-header">
-                <h2 class="section-title">ЗАВАНТАЖИТИ</h2>
-                <div class="title-line"></div>
+        <!-- Download Zone -->
+        <section id="download-zone" class="info-block download-block">
+            <div class="buy-now-header">
+                <div class="buy-box-top">Buy</div>
+                <div class="buy-box-bottom">Now</div>
             </div>
 
-            <div class="download-container">
-                <div class="download-warning-box">
-                    <div class="warning-icon">⚠</div>
-                    <div class="warning-text">
-                        <strong>РАННІЙ ДОСТУП</strong>
-                        <span>Деякі елементи можуть бути неперекладені</span>
-                    </div>
-                </div>
-
-                <button class="btn-download">
-                    <div class="download-icon">⬇</div>
-                    <div class="download-info">
-                        <div class="download-title">ЗАВАНТАЖИТИ ЛОКАЛІЗАЦІЮ</div>
-                        <div class="download-version">Версія 0.8.5 Beta · PC (Steam) · 250 MB</div>
-                    </div>
-                </button>
-
-                <div class="download-meta">
-                    <span>Оновлено: 22.11.2025</span>
+            <div class="download-warning-p5">
+                <span class="warn-icon">⚠</span>
+                <div class="warn-text">
+                    <strong>РАННІЙ ДОСТУП</strong>
+                    <span>Деякі елементи можуть бути неперекладені</span>
                 </div>
             </div>
 
-            <!-- Social Links -->
-            <div class="social-container">
-                <a href="https://t.me/LittleBitUA" class="social-link">
-                    <span class="social-icon">📱</span>
-                    <span class="social-text">TELEGRAM</span>
+            <button class="btn-download-p5">
+                <span class="dl-icon">⬇</span>
+                <div class="dl-text">
+                    <div class="dl-title">ЗАВАНТАЖИТИ ЛОКАЛІЗАЦІЮ</div>
+                    <div class="dl-version">Версія 0.8.5 Beta · PC (Steam) · 250 MB</div>
+                </div>
+            </button>
+
+            <div class="download-meta-p5">
+                <span>Оновлено: 22.11.2025</span>
+            </div>
+
+            <!-- Social -->
+            <div class="social-links-p5">
+                <a href="https://t.me/LittleBitUA" class="social-btn-p5">
+                    <span>📱</span>
+                    <span>TELEGRAM</span>
                 </a>
-                <a href="https://discord.gg/littlebitua" class="social-link">
-                    <span class="social-icon">💬</span>
-                    <span class="social-text">DISCORD</span>
+                <a href="https://discord.gg/littlebitua" class="social-btn-p5">
+                    <span>💬</span>
+                    <span>DISCORD</span>
                 </a>
-                <a href="https://www.youtube.com/@UA_LittleBit/" class="social-link">
-                    <span class="social-icon">📺</span>
-                    <span class="social-text">YOUTUBE</span>
+                <a href="https://www.youtube.com/@UA_LittleBit/" class="social-btn-p5">
+                    <span>📺</span>
+                    <span>YOUTUBE</span>
                 </a>
             </div>
         </section>
@@ -217,12 +200,10 @@
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <p>© 2025 Солов'їна Команда</p>
-            <p>Persona 5 Royal © ATLUS · SEGA · All rights reserved</p>
-            <p>Фан-переклад · Неофіційний проект</p>
-        </div>
+    <footer class="site-footer-p5">
+        <p>© 2025 Солов'їна Команда</p>
+        <p>Persona 5 Royal © ATLUS · SEGA · All rights reserved</p>
+        <p>Фан-переклад · Неофіційний проект</p>
     </footer>
 
     <script src="script.js"></script>
