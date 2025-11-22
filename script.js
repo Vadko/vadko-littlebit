@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Версія для cache busting зображень (синхронізовано з .version)
-    const ASSETS_VERSION = '1.3.4';
+    const ASSETS_VERSION = '1.3.6';
 
     // Функція для додавання версії до URL зображення
     const addImageVersion = (url) => {
@@ -605,13 +605,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const xPercent = (x / rect.width) * 100;
             const yPercent = (y / rect.height) * 100;
 
+            // Обчислення кута для обертання градієнта
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+
             card.style.setProperty('--mouse-x', `${xPercent}%`);
             card.style.setProperty('--mouse-y', `${yPercent}%`);
+            card.style.setProperty('--gradient-angle', angle);
         });
 
         card.addEventListener('mouseleave', () => {
             card.style.setProperty('--mouse-x', '50%');
             card.style.setProperty('--mouse-y', '50%');
+            card.style.setProperty('--gradient-angle', 0);
         });
     });
 });

@@ -819,16 +819,17 @@ body {
     outline: none; -webkit-tap-highlight-color: transparent; user-select: none;
     --mouse-x: 50%;
     --mouse-y: 50%;
+    --gradient-angle: 0;
 }
 
-/* Анімований градієнт рамки - обертається по всьому контуру */
+/* Градієнт рамки (слідує за курсором) */
 .support-donate-card::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 20px;
     background: conic-gradient(
-        from 0deg,
+        from calc(var(--gradient-angle) * 1deg),
         #00f2ff 0deg,
         #bd00ff 90deg,
         #ff0055 180deg,
@@ -836,22 +837,12 @@ body {
         #00f2ff 360deg
     );
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
     z-index: 0;
 }
 
 .support-donate-card:hover::before {
     opacity: 1;
-    animation: rotateBorder 3s linear infinite;
-}
-
-@keyframes rotateBorder {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
 }
 
 .donate-bg {
@@ -924,16 +915,17 @@ body {
     display: flex; flex-direction: column; align-items: center;
     --mouse-x: 50%;
     --mouse-y: 50%;
+    --gradient-angle: 0;
 }
 
-/* Анімований градієнт рамки для контактів */
+/* Градієнт рамки для контактів (слідує за курсором) */
 .contact-card::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 20px;
     background: conic-gradient(
-        from 0deg,
+        from calc(var(--gradient-angle) * 1deg),
         #00f2ff 0deg,
         #bd00ff 90deg,
         #ff0055 180deg,
@@ -941,13 +933,12 @@ body {
         #00f2ff 360deg
     );
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
     z-index: 0;
 }
 
 .contact-card:hover::before {
     opacity: 1;
-    animation: rotateBorder 3s linear infinite;
 }
 
 .contact-bg {
