@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Версія для cache busting зображень (синхронізовано з .version)
-    const ASSETS_VERSION = '1.3.1';
+    const ASSETS_VERSION = '1.3.2';
 
     // Функція для додавання версії до URL зображення
     const addImageVersion = (url) => {
@@ -593,10 +593,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ініціалізація слайдера
     initNewsSlider();
 
-    // Bento-style gradient effect для donate cards
-    const donateCards = document.querySelectorAll('.support-donate-card');
+    // Bento-style gradient effect для donate та contact cards
+    const bentoCards = document.querySelectorAll('.support-donate-card, .contact-card');
 
-    donateCards.forEach(card => {
+    bentoCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;

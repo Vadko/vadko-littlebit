@@ -821,65 +821,49 @@ body {
     --mouse-y: 50%;
 }
 
-/* Анімований градієнт рамки */
+/* Анімований градієнт рамки - обертається по всьому контуру */
 .support-donate-card::before {
     content: '';
     position: absolute;
-    inset: -2px;
+    inset: -4px;
     border-radius: 20px;
-    padding: 2px;
-    background: linear-gradient(
-        135deg,
-        transparent 0%,
-        transparent 40%,
-        rgba(99, 102, 241, 0.6) 50%,
-        rgba(139, 92, 246, 0.6) 60%,
-        transparent 70%,
-        transparent 100%
+    background: conic-gradient(
+        from 0deg,
+        #00f2ff,
+        #bd00ff,
+        #ff0055,
+        #ff9e00,
+        #00f2ff
     );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
+    animation: rotateBorder 4s linear infinite;
+    z-index: -1;
 }
 
 .support-donate-card:hover::before {
     opacity: 1;
-    animation: rotateBorder 3s linear infinite;
 }
 
 @keyframes rotateBorder {
     0% {
-        background-position: 0% 0%;
-        filter: hue-rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-        background-position: 200% 200%;
-        filter: hue-rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
-/* Радіальний градієнт за курсором */
+/* Внутрішній фон картки */
 .support-donate-card::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 20px;
-    background: radial-gradient(
-        600px circle at var(--mouse-x) var(--mouse-y),
-        rgba(99, 102, 241, 0.15),
-        transparent 40%
-    );
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    border-radius: 18px;
+    background: rgba(15, 20, 30, 0.98);
+    z-index: 0;
     pointer-events: none;
-    z-index: 1;
-}
-
-.support-donate-card:hover::after {
-    opacity: 1;
 }
 
 .donate-bg {
@@ -947,33 +931,72 @@ body {
 
 .contact-card {
     position: relative; border-radius: 20px; padding: 40px 30px;
-    text-decoration: none; color: white; overflow: hidden;
-    border: 1px solid var(--border); background: var(--glass);
-    transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center;
+    text-decoration: none; color: white; overflow: visible;
+    background: rgba(15, 20, 30, 0.95);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex; flex-direction: column; align-items: center;
     backdrop-filter: blur(10px);
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+/* Анімований градієнт рамки для контактів */
+.contact-card::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 20px;
+    background: conic-gradient(
+        from 0deg,
+        #00f2ff,
+        #bd00ff,
+        #ff0055,
+        #ff9e00,
+        #00f2ff
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    animation: rotateBorder 4s linear infinite;
+    z-index: -1;
+}
+
+.contact-card:hover::before {
+    opacity: 1;
+}
+
+/* Внутрішній фон картки */
+.contact-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: rgba(15, 20, 30, 0.98);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .contact-bg {
-    position: absolute; inset: 0; opacity: 0.8; transition: 0.3s;
-    background: linear-gradient(135deg, rgba(20, 25, 40, 0.8), rgba(20, 25, 40, 0.6));
+    position: absolute; inset: 0; opacity: 1; transition: 0.3s;
+    background: rgba(15, 20, 30, 0.6);
+    border-radius: 20px;
+    z-index: 0;
 }
 
 .contact-gradient {
-    position: absolute; inset: 0; opacity: 1; transition: 0.3s;
+    position: absolute; inset: 0; opacity: 0; transition: 0.3s;
+    border-radius: 20px;
+    z-index: 1;
 }
-.contact-telegram .contact-gradient { background: linear-gradient(135deg, rgba(0, 136, 204, 0.2), rgba(0, 136, 204, 0.1)); }
-.contact-youtube .contact-gradient { background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(196, 48, 43, 0.1)); }
-.contact-tiktok .contact-gradient { background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.1)); }
-.contact-twitter .contact-gradient { background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)); }
+.contact-telegram .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 136, 204, 0.15), transparent 60%); }
+.contact-youtube .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 0, 0, 0.15), transparent 60%); }
+.contact-tiktok .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 0, 80, 0.15), transparent 60%); }
+.contact-twitter .contact-gradient { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(99, 102, 241, 0.15), transparent 60%); }
 
 .contact-card:hover {
-    transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px); box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
 }
 .contact-card:hover .contact-gradient { opacity: 1; }
-.contact-telegram:hover { border-color: rgba(0, 136, 204, 0.5); }
-.contact-youtube:hover { border-color: rgba(255, 0, 0, 0.5); }
-.contact-tiktok:hover { border-color: rgba(255, 0, 80, 0.5); }
-.contact-twitter:hover { border-color: rgba(255, 255, 255, 0.3); }
 
 .contact-content { position: relative; z-index: 2; text-align: center; width: 100%; }
 
