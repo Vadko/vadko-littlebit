@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Версія для cache busting зображень (синхронізовано з .version)
-    const ASSETS_VERSION = '1.3.2';
+    const ASSETS_VERSION = '1.3.3';
 
     // Функція для додавання версії до URL зображення
     const addImageVersion = (url) => {

@@ -825,25 +825,29 @@ body {
 .support-donate-card::before {
     content: '';
     position: absolute;
-    inset: -4px;
-    border-radius: 20px;
+    inset: -3px;
+    border-radius: 22px;
+    padding: 3px;
     background: conic-gradient(
         from 0deg,
-        #00f2ff,
-        #bd00ff,
-        #ff0055,
-        #ff9e00,
-        #00f2ff
+        #00f2ff 0deg,
+        #bd00ff 90deg,
+        #ff0055 180deg,
+        #ff9e00 270deg,
+        #00f2ff 360deg
     );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
-    animation: rotateBorder 4s linear infinite;
-    z-index: -1;
+    z-index: 1;
 }
 
 .support-donate-card:hover::before {
     opacity: 1;
+    animation: rotateBorder 3s linear infinite;
 }
 
 @keyframes rotateBorder {
@@ -853,17 +857,6 @@ body {
     100% {
         transform: rotate(360deg);
     }
-}
-
-/* Внутрішній фон картки */
-.support-donate-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 18px;
-    background: rgba(15, 20, 30, 0.98);
-    z-index: 0;
-    pointer-events: none;
 }
 
 .donate-bg {
@@ -944,36 +937,29 @@ body {
 .contact-card::before {
     content: '';
     position: absolute;
-    inset: -4px;
-    border-radius: 20px;
+    inset: -3px;
+    border-radius: 22px;
+    padding: 3px;
     background: conic-gradient(
         from 0deg,
-        #00f2ff,
-        #bd00ff,
-        #ff0055,
-        #ff9e00,
-        #00f2ff
+        #00f2ff 0deg,
+        #bd00ff 90deg,
+        #ff0055 180deg,
+        #ff9e00 270deg,
+        #00f2ff 360deg
     );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
-    animation: rotateBorder 4s linear infinite;
-    z-index: -1;
+    z-index: 1;
 }
 
 .contact-card:hover::before {
     opacity: 1;
-}
-
-/* Внутрішній фон картки */
-.contact-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 18px;
-    background: rgba(15, 20, 30, 0.98);
-    z-index: 0;
-    pointer-events: none;
+    animation: rotateBorder 3s linear infinite;
 }
 
 .contact-bg {
