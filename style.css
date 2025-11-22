@@ -420,6 +420,8 @@ body {
 
     .news-slide {
         height: 400px;
+        background-size: contain;
+        background-position: center top;
     }
 
     .news-slide-overlay {
@@ -460,6 +462,7 @@ body {
         padding: 11px 22px;
         font-size: 0.9rem;
         min-height: 44px;
+        margin-bottom: 55px;
     }
 
     .slider-controls {
@@ -488,6 +491,8 @@ body {
     .news-slide {
         height: 360px;
         border-radius: 16px;
+        background-size: contain;
+        background-position: center top;
     }
 
     .slider-track {
@@ -522,6 +527,7 @@ body {
         font-size: 0.85rem;
         gap: 8px;
         min-height: 42px;
+        margin-bottom: 50px;
     }
 
     .slider-controls {
@@ -553,6 +559,8 @@ body {
 @media (max-width: 360px) {
     .news-slide {
         height: 340px;
+        background-size: contain;
+        background-position: center top;
     }
 
     .news-slide-content {
@@ -580,6 +588,7 @@ body {
         padding: 9px 16px;
         font-size: 0.8rem;
         min-height: 40px;
+        margin-bottom: 45px;
     }
 
     .slider-controls {
