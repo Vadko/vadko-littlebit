@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Версія для cache busting зображень (синхронізовано з .version)
+    const ASSETS_VERSION = '1.3.1';
+
+    // Функція для додавання версії до URL зображення
+    const addImageVersion = (url) => {
+        if (!url || url.startsWith('http') || url.startsWith('data:')) return url;
+        return url.includes('?') ? `${url}&v=${ASSETS_VERSION}` : `${url}?v=${ASSETS_VERSION}`;
+    };
+
     const translations = {
         uk: {
             nav_projects: "Проєкти", nav_support: "Підтримка", nav_contacts: "Контакти",
@@ -92,15 +101,28 @@ document.addEventListener('DOMContentLoaded', () => {
             let btnClass = 'btn-grad-blue';
 
             // Автоматичний розрахунок загального прогресу на основі компонентів
+            // Шрифти мають найменший вплив на загальну готовність
             let displayProgress = p.progress;
             if (p.progress_text !== undefined || p.progress_textures !== undefined || p.progress_fonts !== undefined) {
-                const components = [];
-                if (p.progress_text !== undefined) components.push(p.progress_text);
-                if (p.progress_textures !== undefined) components.push(p.progress_textures);
-                if (p.progress_fonts !== undefined) components.push(p.progress_fonts);
+                let weightedSum = 0;
+                let totalWeight = 0;
 
-                if (components.length > 0) {
-                    displayProgress = Math.round(components.reduce((a, b) => a + b, 0) / components.length);
+                // Ваги компонентів: текст - 60%, текстури - 30%, шрифти - 10%
+                if (p.progress_text !== undefined) {
+                    weightedSum += p.progress_text * 0.6;
+                    totalWeight += 0.6;
+                }
+                if (p.progress_textures !== undefined) {
+                    weightedSum += p.progress_textures * 0.3;
+                    totalWeight += 0.3;
+                }
+                if (p.progress_fonts !== undefined) {
+                    weightedSum += p.progress_fonts * 0.1;
+                    totalWeight += 0.1;
+                }
+
+                if (totalWeight > 0) {
+                    displayProgress = Math.round(weightedSum / totalWeight);
                 }
             }
 
@@ -130,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'game-card';
             card.innerHTML = `
                 <div class="card-visual">
-                    <img src="${p.cover}" class="card-bg-img" loading="lazy">
+                    <img src="${addImageVersion(p.cover)}" class="card-bg-img" loading="lazy">
                     <div class="card-logo-layer">
-                        <img src="${p.logo}" class="card-logo" onerror="this.style.display='none'">
+                        <img src="${addImageVersion(p.logo)}" class="card-logo" onerror="this.style.display='none'">
                     </div>
                 </div>
                 <div class="card-info">
@@ -212,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     // Yakuza Easter Egg
-    const yakuzaSound = new Audio('assets/sound.mp3');
+    const yakuzaSound = new Audio(addImageVersion('assets/sound.mp3'));
     let yakuzaSoundPlayed = false;
 
     document.getElementById('search').addEventListener('input', (e) => {
@@ -244,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!p) return;
         const t = translations[currentLang];
 
-        document.getElementById('m-logo').src = p.logo;
+        document.getElementById('m-logo').src = addImageVersion(p.logo);
         document.getElementById('m-desc').innerHTML = currentLang==='uk'?p.desc: (p.desc_en || p.desc);
 
         const sBox = document.getElementById('m-stats'); sBox.innerHTML = '';
@@ -337,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const buttonText = currentLang === 'uk' ? slide.buttonText : (slide.buttonText_en || slide.buttonText);
 
                 // Lazy loading: завантажуємо тільки перший слайд, інші через data-атрибут
-                const bgStyle = index === 0 ? `style="background-image: url('${slide.image}');"` : `data-bg="${slide.image}"`;
+                const bgStyle = index === 0 ? `style="background-image: url('${addImageVersion(slide.image)}');"` : `data-bg="${addImageVersion(slide.image)}"`;
 
                 return `
                     <div class="news-slide ${isActive}" ${bgStyle}>
@@ -570,4 +592,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ініціалізація слайдера
     initNewsSlider();
+
+    // Bento-style gradient effect для donate cards
+    const donateCards = document.querySelectorAll('.support-donate-card');
+
+    donateCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+
+            card.style.setProperty('--mouse-x', `${xPercent}%`);
+            card.style.setProperty('--mouse-y', `${yPercent}%`);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--mouse-x', '50%');
+            card.style.setProperty('--mouse-y', '50%');
+        });
+    });
 });
